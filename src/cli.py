@@ -23,10 +23,14 @@ def cmd_search(a):
 
 
 def cmd_ask(a):
-    from .generator import answer, sources
+    from .generator import answer, check_citations, sources
     vec, bm = load_indexes(a.repo)
     hits = hybrid_search(a.query, vec, bm, mode=a.mode, top_k=a.k)
-    print(answer(a.query, hits))
+    text = answer(a.query, hits)
+    print(text)
+    bad = check_citations(text, hits)
+    if bad:
+        print(f"\nUyarı: bağlamda olmayan atıflar: {', '.join(bad)}")
     print("\nKaynaklar:")
     for s in sources(hits):
         print(f"  - {s}")

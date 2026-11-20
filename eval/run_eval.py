@@ -24,25 +24,40 @@ def base_symbol(symbol: str) -> str:
     return SUFFIX.sub("", symbol)
 
 
-def symbol_matches(chunk_symbol: str, expected: str) -> bool:
+MD_LINK = re.compile(r"\[([^\]]*)\]\([^)]*\)")
+
+
+def norm_heading(text: str) -> str:
+    """Markdown başlığı: backtick sil, [x](url) -> x, boşlukları sadeleştir."""
+    text = MD_LINK.sub(r"\1", text.replace("`", ""))
+    return " ".join(text.split())
+
+
+def symbol_matches(chunk_symbol: str, expected: str, chunk=None) -> bool:
     """Eşleşme kuralları (hepsi base_symbol sonrası):
     1. chunk symbol'ü == expected
-    2. markdown başlık yolu "A > B": son öğe == expected
+    2. markdown başlık yolu "A > B": son öğe == expected (başlıklar normalize edilir)
     3. expected sınıf adı ("Sinif", noktasız): chunk "Sinif" ya da "Sinif.metot" olabilir
-       (sınıf soruları, sınıfın metot parçasıyla da doğru sayılır)
+    4. expected "Sinif.metot", chunk "Sinif" (sınıf parçası) ve chunk.text içinde
+       `def metot(` / `async def metot(` varsa eşleşir (kısa sınıflar bölünmüyor)
     """
     sym = base_symbol(chunk_symbol)
     if sym == expected:
         return True
-    if " > " in sym and sym.rsplit(" > ", 1)[-1].strip() == expected:
+    if " > " in sym and norm_heading(sym.rsplit(" > ", 1)[-1]) == norm_heading(expected):
         return True
     if "." not in expected and " > " not in sym and sym.startswith(expected + "."):
         return True
+    if chunk is not None and "." in expected and getattr(chunk, "kind", None) == "class":
+        cls, meth = expected.split(".", 1)
+        if sym == cls and re.search(rf"(?:async\s+)?def\s+{re.escape(meth)}\s*\(",
+                                    getattr(chunk, "text", "") or ""):
+            return True
     return False
 
 
 def is_match(chunk, expected: list[dict]) -> bool:
-    return any(chunk.path == e["path"] and symbol_matches(chunk.symbol, e["symbol"])
+    return any(chunk.path == e["path"] and symbol_matches(chunk.symbol, e["symbol"], chunk)
                for e in expected)
 
 

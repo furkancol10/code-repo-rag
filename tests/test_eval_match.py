@@ -40,3 +40,19 @@ def test_dedupe_and_rank():
     assert [c.symbol for c, _ in dedupe(hits)] == ["f", "g", "h"]
     assert rank_of(hits, [{"path": "b.py", "symbol": "h"}]) == 3
     assert rank_of(hits, [{"path": "z.py", "symbol": "h"}]) is None
+
+
+def test_class_chunk_contains_method():
+    cls = C(path="a.py", symbol="NumpyIndex", kind="class",
+            text="class NumpyIndex:\n    def add(self):\n        pass\n    async def search(self, q):\n        pass\n")
+    exp = [{"path": "a.py", "symbol": "NumpyIndex.search"}]
+    assert is_match(cls, exp)
+    assert not is_match(cls, [{"path": "a.py", "symbol": "NumpyIndex.delete"}])
+    assert not is_match(cls, [{"path": "a.py", "symbol": "Other.search"}])
+    fn = C(path="a.py", symbol="NumpyIndex", kind="function", text=cls.text)
+    assert not is_match(fn, exp)
+
+
+def test_markdown_heading_normalized():
+    assert symbol_matches("Kurulum > `GPU`  destegi", "GPU destegi")
+    assert symbol_matches("Kurulum > [Rehber](http://x.y/z) notu", "Rehber notu")

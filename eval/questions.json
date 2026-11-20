@@ -352,6 +352,10 @@
    {
     "path": "src/embedder.py",
     "symbol": "get_model"
+   },
+   {
+    "path": "app.py",
+    "symbol": "load_embed_model"
    }
   ]
  },
