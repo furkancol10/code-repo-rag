@@ -17,8 +17,10 @@ QUERY_PREFIX: dict[str, str] = {}
 LLM = "qwen3.5:4b"
 
 TOP_K = 5
-CANDIDATES = 30
-RRF_K = 60
+CANDIDATES = 20  # eval/tune_rrf.py (tuning seti) ile seçildi
+RRF_K = 30
+RRF_W_BM25 = 0.3  # ağırlıklı RRF: BM25 listesinin ağırlığı (eval/tune_rrf.py)
+RRF_W_VEC = 1.0
 MAX_CHUNK_LINES = 80
 
 EXTENSIONS = (".py", ".md")

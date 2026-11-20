@@ -119,7 +119,7 @@ def main():
         vec, bm = idx[q["repo"]]
         for mode in MODES:
             hits = hybrid.hybrid_search(q["question"], vec, bm, mode=mode,
-                                        top_k=30, candidates=50)
+                                        top_k=30)  # candidates/k/ağırlıklar: config
             r = rank_of(hits, q["expected"])
             for t in (q["type"], "all"):
                 ranks[(mode, q["repo"], t)].append(r)

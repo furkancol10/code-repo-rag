@@ -45,14 +45,18 @@ Aynı sembolün bölünmüş parçaları tek hit sayılır. Ayrıntı: `eval/run
 | vector | all | name | 30 | 0.90 | 1.00 | 0.939 |
 | vector | all | conceptual | 29 | 0.52 | 0.79 | 0.645 |
 | vector | all | all | 59 | 0.71 | 0.90 | 0.794 |
-| hybrid | httpx | name | 15 | 0.93 | 1.00 | 0.967 |
-| hybrid | httpx | conceptual | 15 | 0.53 | 0.87 | 0.696 |
-| hybrid | httpx | all | 30 | 0.73 | 0.93 | 0.831 |
-| hybrid | kisiselnotarama | name | 15 | 0.87 | 1.00 | 0.922 |
-| hybrid | kisiselnotarama | conceptual | 14 | 0.43 | 0.71 | 0.544 |
-| hybrid | kisiselnotarama | all | 29 | 0.66 | 0.86 | 0.740 |
+| hybrid | httpx | name | 15 | 0.93 | 1.00 | 0.956 |
+| hybrid | httpx | conceptual | 15 | 0.60 | 0.87 | 0.719 |
+| hybrid | httpx | all | 30 | 0.77 | 0.93 | 0.837 |
+| hybrid | kisiselnotarama | name | 15 | 0.87 | 1.00 | 0.933 |
+| hybrid | kisiselnotarama | conceptual | 14 | 0.43 | 0.79 | 0.560 |
+| hybrid | kisiselnotarama | all | 29 | 0.66 | 0.90 | 0.753 |
 | hybrid | all | name | 30 | 0.90 | 1.00 | 0.944 |
-| hybrid | all | conceptual | 29 | 0.48 | 0.79 | 0.623 |
-| hybrid | all | all | 59 | 0.69 | 0.90 | 0.786 |
+| hybrid | all | conceptual | 29 | 0.52 | 0.83 | 0.642 |
+| hybrid | all | all | 59 | 0.71 | 0.92 | 0.796 |
 
-Hybrid ilk 10'da bulamadığı sorular: kna-01, kna-10, kna-24, kna-27, kna-28, kna-29, hx-13, hx-28, hx-29
+Hybrid ilk 10'da bulamadığı sorular: kna-23, kna-29, hx-17
+
+Hibrit, ağırlıklı RRF kullanır (`score = Σ w_i/(k+rank)`): w_bm25=0.3, w_vec=1, k=30, candidates=20.
+Bu değerler yalnız ayrı tuning setinde (`eval/tuning.json`, 36 soru) `eval/tune_rrf.py` ızgarasıyla seçildi; ana set yalnız sonda bir kez çalıştırıldı (`eval/tuning_results.md`).
+Ana sette hibrit, conceptual hit@5'te vektörü geçiyor (0.83 / 0.79, yani 1 soru) ama conceptual MRR'de hâlâ çok az geride (0.642 / 0.645); genel MRR'de fark ihmal edilebilir (0.796 / 0.794).
