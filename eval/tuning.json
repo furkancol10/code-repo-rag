@@ -70,5 +70,377 @@
     "symbol": "Client.stream"
    }
   ]
+ },
+ {
+  "id": "tune-kna-01",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`approx_tokens` metin uzunluğundan token sayısını nasıl tahmin ediyor?",
+  "expected": [
+   {
+    "path": "src/conversation.py",
+    "symbol": "approx_tokens"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-02",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`rel_source` bir dosya yolunu nasıl gösteriyor?",
+  "expected": [
+   {
+    "path": "src/loader.py",
+    "symbol": "rel_source"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-03",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`window` sohbet geçmişinden kaç turu ve hangi sırayla alıyor?",
+  "expected": [
+   {
+    "path": "src/conversation.py",
+    "symbol": "window"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-04",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`resolve_device` cuda yoksa hangi cihazı döndürür?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "resolve_device"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-05",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`title_from` uzun bir soruyu başlığa nasıl kısaltıyor?",
+  "expected": [
+   {
+    "path": "src/history.py",
+    "symbol": "title_from"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-06",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`set_top_k` verilen değeri hangi aralığa sıkıştırıyor?",
+  "expected": [
+   {
+    "path": "src/settings.py",
+    "symbol": "set_top_k"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-07",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`chunk_label` kaynak etiketini nasıl oluşturuyor?",
+  "expected": [
+   {
+    "path": "src/chunker.py",
+    "symbol": "chunk_label"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-08",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`newest_mtime` ne döndürüyor?",
+  "expected": [
+   {
+    "path": "src/loader.py",
+    "symbol": "newest_mtime"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-09",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Sabit boyutlu parçalamada komşu parçalar neden ve nasıl örtüşüyor?",
+  "expected": [
+   {
+    "path": "src/chunker.py",
+    "symbol": "chunk_fixed"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-10",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Benzerlik skoru eşiğin altında kaldığında kullanıcıya hangi mesaj gösteriliyor?",
+  "expected": [
+   {
+    "path": "src/formats.py",
+    "symbol": "below_threshold_note"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-11",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Word belgelerindeki tablolar ve başlıklar metne nasıl dönüştürülüyor?",
+  "expected": [
+   {
+    "path": "src/formats.py",
+    "symbol": "read_docx"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-12",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "İndeksin henüz oluşturulmadığı hatası nasıl tanınıyor?",
+  "expected": [
+   {
+    "path": "src/qa.py",
+    "symbol": "is_index_missing"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-13",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Kullanıcı sorusu arama için nasıl vektöre çevriliyor?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "embed_query"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-14",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Kayıtlı tüm sohbetler nasıl siliniyor?",
+  "expected": [
+   {
+    "path": "src/history.py",
+    "symbol": "delete_all"
+   }
+  ]
+ },
+ {
+  "id": "tune-kna-15",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Okunamayan ya da desteklenmeyen dosyalar yüklemede nasıl raporlanıyor?",
+  "expected": [
+   {
+    "path": "src/loader.py",
+    "symbol": "load_report"
+   },
+   {
+    "path": "src/loader.py",
+    "symbol": "LoadReport"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-01",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Response.iter_lines` ne döndürür?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.iter_lines"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-02",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Response.elapsed` neyi ölçer?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.elapsed"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-03",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`URL.join` göreli adresleri nasıl birleştirir?",
+  "expected": [
+   {
+    "path": "httpx/_urls.py",
+    "symbol": "URL.join"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-04",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`codes.get_reason_phrase` ne döndürür?",
+  "expected": [
+   {
+    "path": "httpx/_status_codes.py",
+    "symbol": "codes.get_reason_phrase"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-05",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`NetRCAuth` kimlik bilgisini nereden alır?",
+  "expected": [
+   {
+    "path": "httpx/_auth.py",
+    "symbol": "NetRCAuth"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-06",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`LineDecoder` metni nasıl satırlara böler?",
+  "expected": [
+   {
+    "path": "httpx/_decoders.py",
+    "symbol": "LineDecoder"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-07",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`URL.copy_add_param` ne işe yarar?",
+  "expected": [
+   {
+    "path": "httpx/_urls.py",
+    "symbol": "URL.copy_add_param"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-08",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`HTTPStatusError` ne zaman oluşur?",
+  "expected": [
+   {
+    "path": "httpx/_exceptions.py",
+    "symbol": "HTTPStatusError"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-09",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Kendi özel kimlik doğrulama şemamı nasıl yazarım?",
+  "expected": [
+   {
+    "path": "docs/advanced/authentication.md",
+    "symbol": "Custom authentication schemes"
+   },
+   {
+    "path": "httpx/_auth.py",
+    "symbol": "Auth.auth_flow"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-10",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "İndirme ilerlemesi nasıl izlenir?",
+  "expected": [
+   {
+    "path": "docs/advanced/clients.md",
+    "symbol": "Monitoring download progress"
+   },
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.num_bytes_downloaded"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-11",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "HTTP/2 desteği nasıl açılır?",
+  "expected": [
+   {
+    "path": "docs/http2.md",
+    "symbol": "Enabling HTTP/2"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-12",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "İstemci sertifikası ile kimlik doğrulaması nasıl yapılır?",
+  "expected": [
+   {
+    "path": "docs/advanced/ssl.md",
+    "symbol": "Client side certificates"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-13",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Proxy üzerinden HTTP isteklerinde forward ve tunnel yöntemleri arasındaki fark nedir?",
+  "expected": [
+   {
+    "path": "docs/advanced/proxies.md",
+    "symbol": "FORWARD vs TUNNEL"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-14",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yanıtın karakter kümesi otomatik algılama ile nasıl belirlenir?",
+  "expected": [
+   {
+    "path": "docs/advanced/text-encodings.md",
+    "symbol": "Using auto-detection"
+   }
+  ]
+ },
+ {
+  "id": "tune-hx-15",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "SOCKS proxy kullanmak için ne yapmak gerekir?",
+  "expected": [
+   {
+    "path": "docs/advanced/proxies.md",
+    "symbol": "SOCKS"
+   }
+  ]
  }
 ]
