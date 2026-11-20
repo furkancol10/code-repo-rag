@@ -1,0 +1,74 @@
+[
+ {
+  "id": "tune-01",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`load_notes` ne yükler?",
+  "expected": [
+   {
+    "path": "src/loader.py",
+    "symbol": "load_notes"
+   }
+  ]
+ },
+ {
+  "id": "tune-02",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`answer_followup` yeni arama yapıyor mu?",
+  "expected": [
+   {
+    "path": "src/generator.py",
+    "symbol": "answer_followup"
+   }
+  ]
+ },
+ {
+  "id": "tune-03",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "PDF sayfaları parçalanırken sayfa numarası nasıl korunuyor?",
+  "expected": [
+   {
+    "path": "src/chunker.py",
+    "symbol": "chunk_pages"
+   }
+  ]
+ },
+ {
+  "id": "tune-04",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Headers.get_list` ne döndürür?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Headers.get_list"
+   }
+  ]
+ },
+ {
+  "id": "tune-05",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`BasicAuth` kimlik bilgisini nasıl iletir?",
+  "expected": [
+   {
+    "path": "httpx/_auth.py",
+    "symbol": "BasicAuth"
+   }
+  ]
+ },
+ {
+  "id": "tune-06",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yanıt gövdesini tamamen belleğe almadan parça parça okumak için hangi çağrı kullanılır?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "Client.stream"
+   }
+  ]
+ }
+]

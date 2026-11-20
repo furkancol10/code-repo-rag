@@ -1,0 +1,762 @@
+[
+ {
+  "id": "kna-01",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`NumpyIndex.search` ne yapıyor?",
+  "expected": [
+   {
+    "path": "src/index.py",
+    "symbol": "NumpyIndex.search"
+   }
+  ]
+ },
+ {
+  "id": "kna-02",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`chunk_by_heading` notu parçalara nasıl bölüyor?",
+  "expected": [
+   {
+    "path": "src/chunker.py",
+    "symbol": "chunk_by_heading"
+   }
+  ]
+ },
+ {
+  "id": "kna-03",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`release_gpu` fonksiyonu ne işe yarıyor?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "release_gpu"
+   }
+  ]
+ },
+ {
+  "id": "kna-04",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`doc_filter.detect` hangi durumlarda belge filtresi uyguluyor?",
+  "expected": [
+   {
+    "path": "src/doc_filter.py",
+    "symbol": "detect"
+   }
+  ]
+ },
+ {
+  "id": "kna-05",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`cited_indices` cevaptaki atıfları nasıl ayrıştırıyor?",
+  "expected": [
+   {
+    "path": "src/sources.py",
+    "symbol": "cited_indices"
+   }
+  ]
+ },
+ {
+  "id": "kna-06",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`fit_budget` neyi kısıyor ve hangi sırayla?",
+  "expected": [
+   {
+    "path": "src/conversation.py",
+    "symbol": "fit_budget"
+   }
+  ]
+ },
+ {
+  "id": "kna-07",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`safe_note_name` neyi temizliyor?",
+  "expected": [
+   {
+    "path": "src/notes_io.py",
+    "symbol": "safe_note_name"
+   }
+  ]
+ },
+ {
+  "id": "kna-08",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`dedupe` hangi parçaları eliyor?",
+  "expected": [
+   {
+    "path": "src/doc_filter.py",
+    "symbol": "dedupe"
+   }
+  ]
+ },
+ {
+  "id": "kna-09",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`rewriter.analyze` ne döndürüyor?",
+  "expected": [
+   {
+    "path": "src/rewriter.py",
+    "symbol": "analyze"
+   }
+  ]
+ },
+ {
+  "id": "kna-10",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`ChromaIndex.build` indeksi nasıl oluşturuyor?",
+  "expected": [
+   {
+    "path": "src/index.py",
+    "symbol": "ChromaIndex.build"
+   }
+  ]
+ },
+ {
+  "id": "kna-11",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`router.route` soruyu hangi sınıflara ayırıyor?",
+  "expected": [
+   {
+    "path": "src/router.py",
+    "symbol": "route"
+   }
+  ]
+ },
+ {
+  "id": "kna-12",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`validate_dir` geçersiz klasörde ne yapıyor?",
+  "expected": [
+   {
+    "path": "src/settings.py",
+    "symbol": "validate_dir"
+   }
+  ]
+ },
+ {
+  "id": "kna-13",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`strip_margins` hangi satırları çıkarıyor?",
+  "expected": [
+   {
+    "path": "src/formats.py",
+    "symbol": "strip_margins"
+   }
+  ]
+ },
+ {
+  "id": "kna-14",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`entities.missing` ne zaman boş olmayan liste döndürür?",
+  "expected": [
+   {
+    "path": "src/entities.py",
+    "symbol": "missing"
+   }
+  ]
+ },
+ {
+  "id": "kna-15",
+  "repo": "kisiselnotarama",
+  "type": "name",
+  "question": "`list_note_files` klasörü nasıl tarıyor?",
+  "expected": [
+   {
+    "path": "src/loader.py",
+    "symbol": "list_note_files"
+   }
+  ]
+ },
+ {
+  "id": "kna-16",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "GPU belleği nerede boşaltılıyor?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "release_gpu"
+   },
+   {
+    "path": "src/embedder.py",
+    "symbol": "release_index_model"
+   }
+  ]
+ },
+ {
+  "id": "kna-17",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Ollama'daki dil modeli indekslemeden önce nasıl bellekten atılıyor?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "unload_llm"
+   }
+  ]
+ },
+ {
+  "id": "kna-18",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Kullanıcının önceki cevabın kaynağını sorduğu nasıl anlaşılıyor?",
+  "expected": [
+   {
+    "path": "src/router.py",
+    "symbol": "is_sources"
+   }
+  ]
+ },
+ {
+  "id": "kna-19",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Sohbet geçmişi modelin token sınırına sığmadığında ne oluyor?",
+  "expected": [
+   {
+    "path": "src/conversation.py",
+    "symbol": "fit_budget"
+   }
+  ]
+ },
+ {
+  "id": "kna-20",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Cevaptaki [2-4] gibi aralıklı atıflar hangi kaynak numaralarına çevriliyor?",
+  "expected": [
+   {
+    "path": "src/sources.py",
+    "symbol": "cited_indices"
+   }
+  ]
+ },
+ {
+  "id": "kna-21",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "PDF'lerde her sayfada tekrarlayan üst/alt bilgi nasıl temizleniyor?",
+  "expected": [
+   {
+    "path": "src/formats.py",
+    "symbol": "strip_margins"
+   }
+  ]
+ },
+ {
+  "id": "kna-22",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Aynı içerikli iki dosya (pdf ve html) tek belge olarak nasıl sayılıyor?",
+  "expected": [
+   {
+    "path": "src/doc_filter.py",
+    "symbol": "_n_docs"
+   },
+   {
+    "path": "src/doc_filter.py",
+    "symbol": "dedupe"
+   }
+  ]
+ },
+ {
+  "id": "kna-23",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Soruda notlarda hiç geçmeyen özel bir ad varsa sistem cevap üretmeyi nasıl reddediyor?",
+  "expected": [
+   {
+    "path": "src/entities.py",
+    "symbol": "missing"
+   },
+   {
+    "path": "src/entities.py",
+    "symbol": "guard_note"
+   }
+  ]
+ },
+ {
+  "id": "kna-24",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Kullanıcının verdiği dosya adı klasör dışına çıkmasın diye ne yapılıyor?",
+  "expected": [
+   {
+    "path": "src/notes_io.py",
+    "symbol": "safe_note_name"
+   }
+  ]
+ },
+ {
+  "id": "kna-25",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Soru zaten anlaşılır ise LLM'e yeniden yazdırma adımı nasıl atlanıyor?",
+  "expected": [
+   {
+    "path": "src/rewriter.py",
+    "symbol": "needs_rewrite"
+   }
+  ]
+ },
+ {
+  "id": "kna-26",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Not klasörü değişince eski indeksin kullanılmaması nasıl sağlanıyor?",
+  "expected": [
+   {
+    "path": "src/index.py",
+    "symbol": "index_name"
+   },
+   {
+    "path": "src/index.py",
+    "symbol": "folder_hash"
+   }
+  ]
+ },
+ {
+  "id": "kna-27",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Örnek sorular hangi yöntemle üretiliyor?",
+  "expected": [
+   {
+    "path": "src/examples.py",
+    "symbol": "example_questions"
+   },
+   {
+    "path": "src/examples.py",
+    "symbol": "_concepts"
+   }
+  ]
+ },
+ {
+  "id": "kna-28",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Embedding modeli her soruda yeniden yüklenmesin diye ne yapılıyor?",
+  "expected": [
+   {
+    "path": "src/embedder.py",
+    "symbol": "get_model"
+   }
+  ]
+ },
+ {
+  "id": "kna-29",
+  "repo": "kisiselnotarama",
+  "type": "conceptual",
+  "question": "Benzerlik eşiği ayarı komut satırında hangi öncelikle belirleniyor?",
+  "expected": [
+   {
+    "path": "src/cli.py",
+    "symbol": "_threshold"
+   }
+  ]
+ },
+ {
+  "id": "hx-01",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Client.send` ne yapıyor?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "Client.send"
+   }
+  ]
+ },
+ {
+  "id": "hx-02",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Response.raise_for_status` hangi durumda hata fırlatıyor?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.raise_for_status"
+   }
+  ]
+ },
+ {
+  "id": "hx-03",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`DigestAuth._parse_challenge` neyi ayrıştırıyor?",
+  "expected": [
+   {
+    "path": "httpx/_auth.py",
+    "symbol": "DigestAuth._parse_challenge"
+   }
+  ]
+ },
+ {
+  "id": "hx-04",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Cookies.extract_cookies` çerezleri nereden alıyor?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Cookies.extract_cookies"
+   }
+  ]
+ },
+ {
+  "id": "hx-05",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`URL.copy_with` ne işe yarıyor?",
+  "expected": [
+   {
+    "path": "httpx/_urls.py",
+    "symbol": "URL.copy_with"
+   }
+  ]
+ },
+ {
+  "id": "hx-06",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`MultiDecoder` sınıfı neyi birleştiriyor?",
+  "expected": [
+   {
+    "path": "httpx/_decoders.py",
+    "symbol": "MultiDecoder"
+   }
+  ]
+ },
+ {
+  "id": "hx-07",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`encode_request` hangi parametreleri işliyor?",
+  "expected": [
+   {
+    "path": "httpx/_content.py",
+    "symbol": "encode_request"
+   }
+  ]
+ },
+ {
+  "id": "hx-08",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`MockTransport` ne için kullanılır?",
+  "expected": [
+   {
+    "path": "httpx/_transports/mock.py",
+    "symbol": "MockTransport"
+   }
+  ]
+ },
+ {
+  "id": "hx-09",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`BaseClient._redirect_method` metodu ne zaman değiştiriyor?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "BaseClient._redirect_method"
+   }
+  ]
+ },
+ {
+  "id": "hx-10",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`Timeout` sınıfı hangi zaman aşımı değerlerini tutuyor?",
+  "expected": [
+   {
+    "path": "httpx/_config.py",
+    "symbol": "Timeout"
+   }
+  ]
+ },
+ {
+  "id": "hx-11",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`QueryParams.merge` ne döndürüyor?",
+  "expected": [
+   {
+    "path": "httpx/_urls.py",
+    "symbol": "QueryParams.merge"
+   }
+  ]
+ },
+ {
+  "id": "hx-12",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`get_environment_proxies` proxy bilgisini nereden okuyor?",
+  "expected": [
+   {
+    "path": "httpx/_utils.py",
+    "symbol": "get_environment_proxies"
+   }
+  ]
+ },
+ {
+  "id": "hx-13",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`MultipartStream.get_content_length` hangi durumda None döner?",
+  "expected": [
+   {
+    "path": "httpx/_multipart.py",
+    "symbol": "MultipartStream.get_content_length"
+   }
+  ]
+ },
+ {
+  "id": "hx-14",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`normalize_path` hangi segmentleri atıyor?",
+  "expected": [
+   {
+    "path": "httpx/_urlparse.py",
+    "symbol": "normalize_path"
+   }
+  ]
+ },
+ {
+  "id": "hx-15",
+  "repo": "httpx",
+  "type": "name",
+  "question": "`WSGITransport` ne işe yarıyor?",
+  "expected": [
+   {
+    "path": "httpx/_transports/wsgi.py",
+    "symbol": "WSGITransport"
+   }
+  ]
+ },
+ {
+  "id": "hx-16",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yönlendirme sırasında istek yöntemi (örneğin POST) ne zaman GET'e çevriliyor?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "BaseClient._redirect_method"
+   }
+  ]
+ },
+ {
+  "id": "hx-17",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Sunucu yanıtı gzip ya da brotli ile sıkıştırdıysa içerik nasıl açılıyor?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response._get_content_decoder"
+   },
+   {
+    "path": "httpx/_decoders.py",
+    "symbol": "GZipDecoder"
+   },
+   {
+    "path": "httpx/_decoders.py",
+    "symbol": "BrotliDecoder"
+   }
+  ]
+ },
+ {
+  "id": "hx-18",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yönlendirme başka bir alan adına giderse kimlik doğrulama başlığına ne oluyor?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "BaseClient._redirect_headers"
+   },
+   {
+    "path": "httpx/_client.py",
+    "symbol": "_same_origin"
+   }
+  ]
+ },
+ {
+  "id": "hx-19",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Bir yönlendirmenin http'den https'e yükseltme olup olmadığı nasıl anlaşılıyor?",
+  "expected": [
+   {
+    "path": "httpx/_client.py",
+    "symbol": "_is_https_redirect"
+   }
+  ]
+ },
+ {
+  "id": "hx-20",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Eşzamanlı bağlantı sayısı üst sınırı nasıl ayarlanır?",
+  "expected": [
+   {
+    "path": "httpx/_config.py",
+    "symbol": "Limits"
+   }
+  ]
+ },
+ {
+  "id": "hx-21",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Zaman aşımı varsayılan olarak kaç saniye ve nasıl kapatılır?",
+  "expected": [
+   {
+    "path": "docs/advanced/timeouts.md",
+    "symbol": "Setting and disabling timeouts"
+   },
+   {
+    "path": "httpx/_config.py",
+    "symbol": "Timeout"
+   }
+  ]
+ },
+ {
+  "id": "hx-22",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Bir yanıtın 4xx ya da 5xx hata kodu taşıyıp taşımadığı nasıl kontrol edilir?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.is_error"
+   },
+   {
+    "path": "httpx/_status_codes.py",
+    "symbol": "codes.is_error"
+   }
+  ]
+ },
+ {
+  "id": "hx-23",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yanıt metninin karakter kodlaması nasıl tahmin ediliyor?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.encoding"
+   },
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.charset_encoding"
+   }
+  ]
+ },
+ {
+  "id": "hx-24",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Dosya benzeri bir nesnenin bayt uzunluğu içeriği okumadan nasıl bulunuyor?",
+  "expected": [
+   {
+    "path": "httpx/_utils.py",
+    "symbol": "peek_filelike_length"
+   }
+  ]
+ },
+ {
+  "id": "hx-25",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Çok parçalı form alanlarında ad ve dosya adı nasıl kodlanıyor?",
+  "expected": [
+   {
+    "path": "httpx/_multipart.py",
+    "symbol": "_format_form_param"
+   }
+  ]
+ },
+ {
+  "id": "hx-26",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Çok fazla yönlendirme olduğunda hangi hata oluşuyor?",
+  "expected": [
+   {
+    "path": "httpx/_exceptions.py",
+    "symbol": "TooManyRedirects"
+   }
+  ]
+ },
+ {
+  "id": "hx-27",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Yanıttaki Link başlıkları nasıl ayrıştırılıyor?",
+  "expected": [
+   {
+    "path": "httpx/_models.py",
+    "symbol": "_parse_header_links"
+   },
+   {
+    "path": "httpx/_models.py",
+    "symbol": "Response.links"
+   }
+  ]
+ },
+ {
+  "id": "hx-28",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Belirli adreslerin proxy'yi atlaması ortam değişkeniyle nasıl sağlanıyor?",
+  "expected": [
+   {
+    "path": "docs/environment_variables.md",
+    "symbol": "NO_PROXY"
+   }
+  ]
+ },
+ {
+  "id": "hx-29",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Async istemciyi Trio ile kullanmak için ne gerekiyor?",
+  "expected": [
+   {
+    "path": "docs/async.md",
+    "symbol": "Trio"
+   }
+  ]
+ },
+ {
+  "id": "hx-30",
+  "repo": "httpx",
+  "type": "conceptual",
+  "question": "Ağa çıkmadan testlerde sahte yanıt döndürmek için ne yapılabilir?",
+  "expected": [
+   {
+    "path": "docs/advanced/transports.md",
+    "symbol": "Mock transports"
+   },
+   {
+    "path": "httpx/_transports/mock.py",
+    "symbol": "MockTransport"
+   }
+  ]
+ }
+]
