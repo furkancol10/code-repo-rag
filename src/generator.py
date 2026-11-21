@@ -20,6 +20,23 @@ SYSTEM = (
 CITATION = re.compile(r"\[([^\[\]:\s]+(?:/[^\[\]:\s]+)*):(\d+)(?:-(\d+))?\]")
 _BLOCK_NUM = re.compile(r"\[(\d+):(\d+)(?:-(\d+))?\]")
 _IMAGE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+_BLOCK_NUM_WS = re.compile(r"([ \t]*)" + _BLOCK_NUM.pattern)
+_CITATION_WS = re.compile(r"([ \t]*)" + CITATION.pattern)
+_CODE = re.compile(
+    r"^(?P<f>`{3,}|~{3,})[^\n]*\n.*?(?:^(?P=f)[`~]*[ \t]*$|\Z)"  # fenced block
+    r"|(?P<i>`+)(?!`).+?(?<!`)(?P=i)(?!`)",  # inline code
+    re.M | re.S)
+
+
+def _plain_only(text: str, fn) -> str:
+    """fn'i yalnız kod dışı (düz metin) parçalara uygular."""
+    out, pos = [], 0
+    for m in _CODE.finditer(text):
+        out.append(fn(text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(fn(text[pos:]))
+    return "".join(out)
 
 
 def _fence(text: str) -> str:
@@ -59,38 +76,41 @@ def _valid(path, start, end, hits) -> bool:
 
 
 def fix_citations(answer: str, hits) -> str:
-    """Geçersiz atıfları onarır: `[n:a-b]` -> n. bloğun yolu; yanlış ön ekli yol -> doğru yol; olmazsa kaldırır."""
+    """Geçersiz atıfları onarır: `[n:a-b]` -> n. bloğun yolu; yanlış ön ekli yol -> doğru yol; olmazsa kaldırır.
+    Kod (satır içi / çitli) içine dokunmaz; kaldırılan atıfın önündeki boşluğu da yutar."""
     def span(m, path):
-        return f"[{path}:{m.group(2)}" + (f"-{m.group(3)}" if m.group(3) else "") + "]"
+        return f"{m.group(1)}[{path}:{m.group(3)}" + (f"-{m.group(4)}" if m.group(4) else "") + "]"
 
     def fix_num(m):
-        n = int(m.group(1))
+        n = int(m.group(2))
         if 1 <= n <= len(hits):
-            cand = span(m, hits[n - 1][0].path)
-            if not check_citations(cand, hits):
-                return cand
+            c = hits[n - 1][0]
+            start = int(m.group(3))
+            end = int(m.group(4)) if m.group(4) else start
+            if _valid(c.path, start, end, [hits[n - 1]]):
+                return span(m, c.path)
         return ""
 
-    out = _BLOCK_NUM.sub(fix_num, answer)
-
     def fix_path(m):
-        path, start = m.group(1), int(m.group(2))
-        end = int(m.group(3)) if m.group(3) else start
+        path, start = m.group(2), int(m.group(3))
+        end = int(m.group(4)) if m.group(4) else start
         if _valid(path, start, end, hits):
             return m.group(0)
         paths = {c.path for c, _ in hits if path.endswith("/" + c.path) or c.path.endswith("/" + path)}
         if len(paths) == 1:
-            cand = span(m, paths.pop())
-            if not check_citations(cand, hits):
-                return cand
+            p = paths.pop()
+            if _valid(p, start, end, hits):
+                return f"{m.group(1)}[{p}:{m.group(3)}" + (f"-{m.group(4)}" if m.group(4) else "") + "]"
         return ""
 
-    out = CITATION.sub(fix_path, out)
-    return re.sub(r"[ \t]+([.,;:!?])|[ \t]{2,}", lambda m: m.group(1) or " ", out)
+    def plain(t):
+        return _CITATION_WS.sub(fix_path, _BLOCK_NUM_WS.sub(fix_num, t))
+
+    return _plain_only(answer, plain)
 
 
 def strip_images(text: str) -> str:
-    return _IMAGE.sub("", text)
+    return _plain_only(text, lambda t: _IMAGE.sub("", t))
 
 
 def answer(question: str, hits) -> str:

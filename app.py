@@ -1,16 +1,27 @@
 """Streamlit arayüzü: streamlit run app.py"""
+from pathlib import Path
+
 import streamlit as st
 
 from src import config
 from src.generator import answer
 from src.hybrid import MODES, hybrid_search
+from src import vector_index
 from src.pipeline import build_index, indexes_exist, load_indexes
 
 
 
 @st.cache_resource(show_spinner=False)
+def _get_indexes(resolved: str, index_name: str):
+    return load_indexes(resolved)
+
+
 def get_indexes(repo_path: str):
-    return load_indexes(repo_path)
+    resolved = str(Path(repo_path).expanduser().resolve())
+    return _get_indexes(resolved, vector_index.index_name(config.EMBED_MODEL, resolved))
+
+
+get_indexes.clear = _get_indexes.clear
 
 
 st.set_page_config(page_title="Kod Repo Asistanı", layout="wide")

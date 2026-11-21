@@ -30,6 +30,11 @@ def test_fence_overflow():
     assert lines[-1] == fence and fence not in lines[2:-1]
 
 
+def test_fence_overflow_five_backticks():
+    hit = (C(path="d.md", start_line=1, end_line=5, symbol="s", text="a\n`````\nx\n`````\nb"), 1.0)
+    assert build_context([hit]).split("\n")[1] == "`" * 6
+
+
 def test_strip_images():
     assert strip_images("a ![x](http://e/p.png) b") == "a  b"
 
@@ -51,3 +56,30 @@ def test_fix_keeps_valid():
 
 def test_reversed_range_invalid():
     assert check_citations("[src/a.py:30-12]", HITS) == ["[src/a.py:30-12]"]
+
+
+def test_code_untouched_by_fix_citations():
+    t = "ok `items[0:5]` ve `d[key:1]`\n```py\nx = a[1:2] ; y[0:5]\n```\n~~~\nz[3:4]\n~~~\nson"
+    assert fix_citations(t, HITS) == t
+
+
+def test_invalid_block_number_removed_in_plain_text_only():
+    assert fix_citations("Bak [7:10-20] `[7:10-20]`.", HITS) == "Bak `[7:10-20]`."
+
+
+def test_no_whitespace_mangling_in_code():
+    t = "```py\nif a != b :\n    x  = 1 ;\n```"
+    assert fix_citations(t, HITS) == t
+
+
+def test_removed_citation_eats_preceding_space():
+    assert fix_citations("Bak [src/a.py:99-120], tamam [9:1].", HITS) == "Bak, tamam."
+
+
+def test_block_range_checked_against_nth_hit():
+    # 12-20 src/a.py'de geçerli ama 2. blok (b/c.py:5-9) için geçersiz
+    assert fix_citations("x [2:12-20]", HITS) == "x"
+
+
+def test_strip_images_skips_code():
+    assert strip_images("`![x](u)` ![y](v)") == "`![x](u)` "
