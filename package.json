@@ -1,0 +1,21 @@
+{
+  "name": "agent-ae4c05c45893b48f3",
+  "version": "1.0.0",
+  "description": "Yerel kod deposu için hibrit (BM25 + bge-m3 vektör, RRF) arama ve atıflı Türkçe soru-cevap. Python ve Markdown dosyalarını sembol bazlı parçalar (sınıf/metot/fonksiyon/başlık).",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.65.1",
+    "@types/node": "^26.6.6",
+    "typescript": "^7.0.2"
+  }
+}
