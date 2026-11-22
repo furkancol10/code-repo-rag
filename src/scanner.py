@@ -11,8 +11,9 @@ def _git_files(root: Path) -> list[str] | None:
     if not (root / ".git").exists():
         return None
     try:
-        r = subprocess.run(["git", "-C", str(root), "ls-files", "-z"],
-                           capture_output=True, check=True)
+        env = {**os.environ, "GIT_CONFIG_NOSYSTEM": "1", "GIT_TERMINAL_PROMPT": "0"}
+        r = subprocess.run(["git", "-c", "core.fsmonitor=", "-C", str(root), "ls-files", "-z"],
+                           capture_output=True, check=True, env=env)
     except (OSError, subprocess.CalledProcessError):
         return None
     return [p for p in r.stdout.decode("utf-8", "replace").split("\0") if p]

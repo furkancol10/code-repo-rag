@@ -1,5 +1,6 @@
 """Embedding (KisiselNotArama/src/embedder.py'den sadeleştirilmiş kopya). GPU, hata olursa CPU."""
 import logging
+import os
 
 import numpy as np
 
@@ -61,27 +62,36 @@ def _disable_cuda(err: Exception) -> None:
     release_gpu()
 
 
-def _encode(texts, prefix, model, device) -> np.ndarray:
+def _encode(texts, prefix, model, device, batch_size: int | None = None) -> np.ndarray:
     vecs = get_model(device, model).encode(
         [prefix + t for t in texts],
-        batch_size=config.EMBED_BATCH_SIZE if device != "cpu" else 8,
+        batch_size=(batch_size or config.EMBED_BATCH_SIZE) if device != "cpu" else 8,
         normalize_embeddings=True, show_progress_bar=False)
     return np.asarray(vecs, dtype=np.float32)
 
 
-def _run(texts, prefix, model, device) -> np.ndarray:
+def _run(texts, prefix, model, device, batch_size: int | None = None) -> np.ndarray:
     if device.startswith("cuda"):
         try:
-            return _encode(texts, prefix, model, device)
+            return _encode(texts, prefix, model, device, batch_size)
         except Exception as e:
             _disable_cuda(e)
             device = "cpu"
-    return _encode(texts, prefix, model, device)
+    return _encode(texts, prefix, model, device, batch_size)
 
 
-def embed_passages(texts: list[str], model: str = config.EMBED_MODEL) -> np.ndarray:
-    return _run(texts, config.PASSAGE_PREFIX.get(model, ""), model,
-                resolve_device(config.EMBED_DEVICE_INDEX))
+def embed_passages(texts: list[str], model: str = config.EMBED_MODEL,
+                   batch_size: int | None = None) -> np.ndarray:
+    """Metinleri uzunluğa göre sıralayıp (az padding) gömer; sonuç orijinal sırada döner."""
+    if not texts:
+        return np.zeros((0, 0), dtype=np.float32)
+    bs = batch_size or int(os.environ.get("KRA_EMBED_BATCH", "32"))
+    order = sorted(range(len(texts)), key=lambda i: len(texts[i]))
+    vecs = _run([texts[i] for i in order], config.PASSAGE_PREFIX.get(model, ""), model,
+                resolve_device(config.EMBED_DEVICE_INDEX), bs)
+    out = np.empty_like(vecs)
+    out[order] = vecs
+    return out
 
 
 def embed_query(text: str, model: str = config.EMBED_MODEL) -> np.ndarray:

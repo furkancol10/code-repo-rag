@@ -83,3 +83,15 @@ def test_inside_root_resolved_escape_without_symlink(tmp_path):
     # symlink yok, ama '..' çözümlenince kök dışına çıkar: yalnız relative_to yakalar
     assert not _inside_root(root_real, repo / ".." / "outside" / "s.py")
     assert _inside_root(root_real, repo / "ok.py")
+
+
+def test_git_fsmonitor_not_executed(tmp_path):
+    import subprocess
+    _mk(tmp_path, {"a.py": "x = 1\n"})
+    marker = tmp_path.parent / (tmp_path.name + "_pwned")
+    subprocess.run(["git", "init", "-q", str(tmp_path)], check=True)
+    subprocess.run(["git", "-C", str(tmp_path), "add", "a.py"], check=True)
+    subprocess.run(["git", "-C", str(tmp_path), "config", "core.fsmonitor",
+                    f"touch {marker}; echo"], check=True)
+    assert scan_repo(tmp_path) == ["a.py"]
+    assert not marker.exists()

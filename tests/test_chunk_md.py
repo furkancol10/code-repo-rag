@@ -47,3 +47,20 @@ def test_form_feed_keeps_line_numbers():
     chunks = chunk_md("doc.md", text)
     b = next(c for c in chunks if c.symbol == "B")
     assert (b.start_line, b.end_line) == (4, 5)
+
+
+def test_fence_mismatched_closer_does_not_close():
+    md = "# A\n```\n~~~\n# not heading\n```\n# B\n"
+    syms = [c.symbol for c in chunk_md("x.md", md)]
+    assert syms == ["A", "B"]
+
+
+def test_fence_closer_must_be_at_least_as_long():
+    md = "# A\n````\n```\n# not heading\n````\n# B\n"
+    syms = [c.symbol for c in chunk_md("x.md", md)]
+    assert syms == ["A", "B"]
+
+
+def test_heading_csharp_keeps_hash():
+    syms = [c.symbol for c in chunk_md("x.md", "# C#\ntext\n## Title ##\nz\n")]
+    assert syms == ["C#", "C# > Title"]

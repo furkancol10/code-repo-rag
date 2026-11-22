@@ -4,8 +4,8 @@ import re
 from . import config
 from .chunk import CodeChunk
 
-_H = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
-_FENCE = re.compile(r"^\s*(```|~~~)")
+_H = re.compile(r"^(#{1,6})\s+(.*?)(?:\s+#+)?\s*$")
+_FENCE = re.compile(r"^\s*(`{3,}|~{3,})(.*)$")
 
 
 def chunk_md(rel: str, text: str) -> list[CodeChunk]:
@@ -14,12 +14,17 @@ def chunk_md(rel: str, text: str) -> list[CodeChunk]:
     if lines and lines[-1] == "":
         lines.pop()
     # (start_idx, level, title)
-    heads, in_fence = [], False
+    heads, fence = [], None  # fence: (karakter, uzunluk) ya da None
     for i, ln in enumerate(lines):
-        if _FENCE.match(ln):
-            in_fence = not in_fence
+        fm = _FENCE.match(ln)
+        if fm:
+            mark = fm.group(1)
+            if fence is None:
+                fence = (mark[0], len(mark))
+            elif mark[0] == fence[0] and len(mark) >= fence[1] and not fm.group(2).strip():
+                fence = None
             continue
-        m = None if in_fence else _H.match(ln)
+        m = None if fence else _H.match(ln)
         if m:
             heads.append((i, len(m.group(1)), m.group(2)))
     bounds = [(0, 0, "")] if not heads or heads[0][0] > 0 else []
