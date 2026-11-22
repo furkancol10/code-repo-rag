@@ -48,11 +48,24 @@ def _is_text(p: Path) -> bool:
         return False
 
 
+def _inside_root(root_real: Path, p: Path) -> bool:
+    """Symlink değil ve çözümlenmiş yol repo kökü içinde (dizin symlink'i kaçışı dahil)."""
+    try:
+        if p.is_symlink():
+            return False
+        p.resolve().relative_to(root_real)
+        return True
+    except (OSError, ValueError, RuntimeError):
+        return False
+
+
 def scan_repo(root) -> list[str]:
     """Repo köküne göre sıralı göreli yolları döner (yalnız indekslenecek .py/.md)."""
     root = Path(root)
     files = _git_files(root)
     if files is None:
         files = _walk_files(root)
+    root_real = root.resolve()
     return sorted(rel for rel in files
-                  if not _excluded(rel) and (root / rel).is_file() and _is_text(root / rel))
+                  if not _excluded(rel) and _inside_root(root_real, root / rel)
+                  and (root / rel).is_file() and _is_text(root / rel))

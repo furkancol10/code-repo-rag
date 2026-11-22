@@ -1,5 +1,6 @@
 """Python: ast ile module/class/method/function parçaları (satırlar 1-tabanlı, dahil)."""
 import ast
+import re
 
 from . import config
 from .chunk import CodeChunk
@@ -102,7 +103,10 @@ def _fallback_spans(lines: list[str]) -> tuple[list[_Span], set[int]]:
 
 
 def chunk_python(rel: str, text: str) -> list[CodeChunk]:
-    lines = text.splitlines()
+    # ast yalnız \r\n, \r, \n'yi satır sonu sayar (splitlines \x0c, \x85 vb. de böler)
+    lines = re.split(r"\r\n|\r|\n", text)
+    if lines and lines[-1] == "":
+        lines.pop()
     if not lines:
         return []
     try:

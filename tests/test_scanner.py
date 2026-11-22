@@ -30,3 +30,30 @@ def test_git_repo_uses_ls_files(tmp_path):
     subprocess.run(["git", "init", "-q"], cwd=tmp_path, check=True)
     subprocess.run(["git", "add", "-A"], cwd=tmp_path, check=True)
     assert scan_repo(tmp_path) == ["a.py"]
+
+
+def test_symlink_escape_skipped(tmp_path):
+    import os
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "secret.py").write_text("S = 1\n")
+    repo = tmp_path / "repo"
+    _mk(repo, {"ok.py": "x = 1\n"})
+    os.symlink(outside / "secret.py", repo / "leak.py")
+    os.symlink(outside, repo / "linkdir")
+    assert scan_repo(repo) == ["ok.py"]
+
+
+def test_symlink_escape_skipped_git(tmp_path):
+    import os
+    import subprocess
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "secret.py").write_text("S = 1\n")
+    repo = tmp_path / "repo"
+    _mk(repo, {"ok.py": "x = 1\n"})
+    os.symlink(outside / "secret.py", repo / "leak.py")
+    os.symlink(outside, repo / "linkdir")
+    subprocess.run(["git", "init", "-q"], cwd=repo, check=True)
+    subprocess.run(["git", "add", "-A"], cwd=repo, check=True)
+    assert scan_repo(repo) == ["ok.py"]

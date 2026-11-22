@@ -139,3 +139,13 @@ def test_empty_and_comment_only():
 
 def test_route():
     assert chunk_file(None, "a/b.py", "def f():\n    pass\n")[0].id == "a/b.py::f"
+
+
+def test_form_feed_and_unicode_separators_keep_line_numbers():
+    for sep in ("\x0c", "\x1c", "\x85", "\u2028"):
+        # sep, kod içinde (form feed: boşluk, diğerleri: yorum içinde) ast'nin satırını bölmez
+        line2 = sep if sep == "\x0c" else f"# a{sep}b"
+        text = f"import os\n{line2}\ndef a():\n    return 1\n"
+        fn = [c for c in chunk_python("m.py", text) if c.symbol == "a"]
+        assert len(fn) == 1, repr(sep)
+        assert (fn[0].start_line, fn[0].end_line) == (3, 4), repr(sep)
