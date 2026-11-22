@@ -36,6 +36,8 @@ def index_name(model: str, repo) -> str:
 class NumpyIndex:
     def __init__(self, name: str):
         self.dir = config.INDEX_DIR / "numpy" / name
+        self._vecs: np.ndarray | None = None
+        self._chunks: list[CodeChunk] | None = None
 
     def exists(self) -> bool:
         return (self.dir / "vecs.npy").exists() and (self.dir / "chunks.json").exists()
@@ -60,13 +62,25 @@ class NumpyIndex:
             shutil.rmtree(tmp, ignore_errors=True)
             raise
         shutil.rmtree(old, ignore_errors=True)
+        self._vecs, self._chunks = vecs, list(chunks)  # önbelleği yenile
+
+    def _load(self) -> None:
+        if self._vecs is None or self._chunks is None:
+            vecs = np.load(self.dir / "vecs.npy")
+            chunks = [CodeChunk(**c) for c in
+                      json.loads((self.dir / "chunks.json").read_text("utf-8"))]
+            self._vecs, self._chunks = vecs, chunks
 
     def chunks(self) -> list[CodeChunk]:
-        return [CodeChunk(**c) for c in json.loads((self.dir / "chunks.json").read_text("utf-8"))]
+        self._load()
+        return self._chunks
 
     def search(self, qvec: np.ndarray, k: int) -> list[tuple[CodeChunk, float]]:
-        vecs = np.load(self.dir / "vecs.npy")
-        chunks = self.chunks()
-        scores = vecs @ qvec  # normalize vektörler: nokta çarpımı = kosinüs
-        top = np.argsort(-scores)[:k]
-        return [(chunks[i], float(scores[i])) for i in top]
+        self._load()
+        scores = self._vecs @ qvec  # normalize vektörler: nokta çarpımı = kosinüs
+        k = min(k, len(scores))
+        if k <= 0:
+            return []
+        top = np.argpartition(-scores, k - 1)[:k] if k < len(scores) else np.arange(len(scores))
+        top = top[np.argsort(-scores[top], kind="stable")]
+        return [(self._chunks[i], float(scores[i])) for i in top]

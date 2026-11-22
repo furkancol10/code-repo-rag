@@ -1,5 +1,5 @@
 """BM25 indeksi: kod tokenizer'ı (camelCase/snake_case/dotted) + rank-bm25 BM25Okapi."""
-import pickle
+import json
 import re
 import shutil
 from dataclasses import asdict
@@ -73,7 +73,7 @@ def _doc_tokens(c: CodeChunk) -> list[str]:
 
 
 class BM25Index:
-    """name verilirse config.INDEX_DIR/bm25/<name>/bm25.pkl altına kaydeder/yükler."""
+    """name verilirse config.INDEX_DIR/bm25/<name>/bm25.json altına kaydeder/yükler."""
 
     def __init__(self, name: str | None = None):
         self.dir = config.INDEX_DIR / "bm25" / name if name else None
@@ -82,7 +82,7 @@ class BM25Index:
 
     @property
     def path(self):
-        return self.dir / "bm25.pkl" if self.dir else None
+        return self.dir / "bm25.json" if self.dir else None
 
     def exists(self) -> bool:
         return bool(self.path and self.path.exists())
@@ -103,9 +103,9 @@ class BM25Index:
             shutil.rmtree(d, ignore_errors=True)
         tmp.mkdir(parents=True)
         try:
-            with open(tmp / "bm25.pkl", "wb") as f:
-                pickle.dump({"version": 1, "chunks": [asdict(c) for c in chunks],
-                             "corpus": corpus}, f)
+            (tmp / "bm25.json").write_text(
+                json.dumps({"version": 2, "chunks": [asdict(c) for c in chunks],
+                            "corpus": corpus}, ensure_ascii=False), encoding="utf-8")
             if self.dir.exists():
                 self.dir.rename(old)
             tmp.rename(self.dir)
@@ -117,9 +117,7 @@ class BM25Index:
         shutil.rmtree(old, ignore_errors=True)
 
     def load(self) -> None:
-        # pickle yalnız bu modülün build() ile yerelde yazdığı dosyayı okur (güvenilir kaynak)
-        with open(self.path, "rb") as f:
-            data = pickle.load(f)
+        data = json.loads(self.path.read_text("utf-8"))
         self._set([CodeChunk(**c) for c in data["chunks"]], data["corpus"])
 
     def chunks(self) -> list[CodeChunk]:

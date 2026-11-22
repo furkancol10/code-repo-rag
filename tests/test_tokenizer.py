@@ -48,7 +48,7 @@ def test_bm25_search_ranks_name():
 def test_bm25_save_load(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "INDEX_DIR", tmp_path)
     BM25Index("t").build(CHUNKS)
-    assert (tmp_path / "bm25" / "t" / "bm25.pkl").exists()
+    assert (tmp_path / "bm25" / "t" / "bm25.json").exists()
     idx = BM25Index("t")
     assert idx.exists()
     assert idx.search("save note", 1)[0][0] == CHUNKS[1]
