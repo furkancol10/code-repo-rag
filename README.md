@@ -59,4 +59,4 @@ Hybrid ilk 10'da bulamadığı sorular: kna-23, kna-29, hx-17
 
 Hibrit, ağırlıklı RRF kullanır (`score = Σ w_i/(k+rank)`): w_bm25=0.3, w_vec=1, k=30, candidates=20.
 Bu değerler yalnız ayrı tuning setinde (`eval/tuning.json`, 36 soru) `eval/tune_rrf.py` ızgarasıyla seçildi; ana set yalnız sonda bir kez çalıştırıldı (`eval/tuning_results.md`).
-Ana sette hibrit, conceptual hit@5'te vektörü geçiyor (0.83 / 0.79, yani 1 soru) ama conceptual MRR'de hâlâ çok az geride (0.642 / 0.645); genel MRR'de fark ihmal edilebilir (0.796 / 0.794).
+Eşleştirilmiş karşılaştırmada (n=59) hibrit ile vektör arama arasındaki fark gürültü düzeyinde: hit@5'te 1 soruda hibrit iyi, 0 soruda kötü, 58 soruda aynı; RR farkı ortalama +0.0014. Hibritin vektör aramadan üstün olduğu bu veriyle söylenemez.
