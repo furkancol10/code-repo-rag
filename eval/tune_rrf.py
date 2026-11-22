@@ -58,9 +58,9 @@ def main():
     def evaluate(mode, w=1.0, k=60, c=MAX_CAND):
         ranks = {"name": [], "conceptual": []}
         for q, sem, lex in cache:
-            hybrid.embed_query = lambda _q: None
             hits = hybrid.hybrid_search(q["question"], _Cached(sem), _Cached(lex), mode=mode,
-                                        top_k=30, candidates=c, k=k, w_bm25=w, w_vec=1.0)
+                                        top_k=30, candidates=c, k=k, w_bm25=w, w_vec=1.0,
+                                        embed_fn=lambda _q: None)
             ranks[q["type"]].append(rank_of(hits, q["expected"]))
         m = {t: metrics(r) for t, r in ranks.items()}
         return m, (m["name"]["mrr"] + m["conceptual"]["mrr"]) / 2

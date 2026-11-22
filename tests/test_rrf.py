@@ -79,3 +79,13 @@ def test_hybrid_search_weights(monkeypatch):
     assert [c.symbol for c, _ in out] == ["a"]
     out = hybrid_search("q", vec, bm, top_k=1, candidates=30, k=0, w_bm25=1.0, w_vec=1.0)
     assert out[0][1] == pytest.approx(1.0)  # a=1, d=1 → ilk görülen (vektör) a
+
+
+def test_hybrid_search_embed_fn_bypasses_embed_query(monkeypatch):
+    def boom(q):
+        raise AssertionError("embed_query çağrılmamalı")
+    monkeypatch.setattr(hybrid, "embed_query", boom)
+    vec, bm = _Fake(["a", "b"]), _Fake(["b", "c"])
+    for mode in ("hybrid", "vector"):
+        hybrid_search("q", vec, bm, mode=mode, top_k=1, embed_fn=lambda q: "EF")
+    assert len(vec.calls) == 2 and all(c[0] == "EF" for c in vec.calls)

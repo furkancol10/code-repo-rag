@@ -1,0 +1,5 @@
+[
+ {"id": "trap-01", "repo": "httpx", "question": "httpx'te GraphQL sorguları nasıl gönderiliyor?"},
+ {"id": "trap-02", "repo": "httpx", "question": "httpx Redis tabanlı yanıt önbelleğini nasıl yapılandırıyor?"},
+ {"id": "trap-03", "repo": "kisiselnotarama", "question": "Bu proje Kubernetes üzerinde nasıl dağıtılıyor?"}
+]

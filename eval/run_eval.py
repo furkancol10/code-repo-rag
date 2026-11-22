@@ -100,7 +100,7 @@ def main():
     from src.embedder import embed_query
     from src.pipeline import build_index, indexes_exist, load_indexes
 
-    hybrid.embed_query = lru_cache(maxsize=None)(embed_query)  # sorgu embedding'i tek sefer
+    cached_embed = lru_cache(maxsize=None)(embed_query)  # sorgu embedding'i tek sefer
 
     fname = "questions.json" if args.set == "main" else "tuning.json"
     questions = json.loads((ROOT / "eval" / fname).read_text("utf-8"))
@@ -119,7 +119,7 @@ def main():
         vec, bm = idx[q["repo"]]
         for mode in MODES:
             hits = hybrid.hybrid_search(q["question"], vec, bm, mode=mode,
-                                        top_k=30)  # candidates/k/ağırlıklar: config
+                                        top_k=30, embed_fn=cached_embed)  # candidates/k/ağırlıklar: config
             r = rank_of(hits, q["expected"])
             for t in (q["type"], "all"):
                 ranks[(mode, q["repo"], t)].append(r)
