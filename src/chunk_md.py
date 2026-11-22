@@ -9,7 +9,10 @@ _FENCE = re.compile(r"^\s*(```|~~~)")
 
 
 def chunk_md(rel: str, text: str) -> list[CodeChunk]:
-    lines = text.splitlines()
+    # yalnız \r\n, \r, \n satır sonudur (splitlines \x0c, \x85 vb. de böler, satırlar kayar)
+    lines = re.split(r"\r\n|\r|\n", text)
+    if lines and lines[-1] == "":
+        lines.pop()
     # (start_idx, level, title)
     heads, in_fence = [], False
     for i, ln in enumerate(lines):

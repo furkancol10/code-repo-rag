@@ -39,3 +39,11 @@ def test_long_section_split(monkeypatch):
     cs = chunk_md("r.md", "# T\n" + "l\n" * 6)
     assert [(c.start_line, c.end_line) for c in cs] == [(1, 3), (4, 6), (7, 7)]
     assert len({c.id for c in cs}) == 3
+
+
+def test_form_feed_keeps_line_numbers():
+    # \x0c ve \x85 editörlerde satır sonu değildir; satır numarası kaymamalı
+    text = "# A\nbir\x0ciki\n\x85uc\n# B\nson\n"
+    chunks = chunk_md("doc.md", text)
+    b = next(c for c in chunks if c.symbol == "B")
+    assert (b.start_line, b.end_line) == (4, 5)
