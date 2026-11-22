@@ -4,12 +4,17 @@ from pathlib import Path
 
 import streamlit as st
 
-from src import config
+from src import config, vector_index
 from src.generator import answer
 from src.hybrid import MODES, hybrid_search
-from src import vector_index
-from src.pipeline import (RepoError, build_index, indexes_exist, known_error_message,
-                          load_indexes, validate_repo)
+from src.pipeline import (
+    RepoError,
+    build_index,
+    indexes_exist,
+    known_error_message,
+    load_indexes,
+    validate_repo,
+)
 
 log = logging.getLogger("kra.app")
 

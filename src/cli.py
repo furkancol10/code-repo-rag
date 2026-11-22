@@ -6,8 +6,7 @@ import sys
 
 from . import config
 from .hybrid import MODES, hybrid_search
-from .pipeline import (RepoError, build_index, known_error_message, load_indexes,
-                       validate_repo)
+from .pipeline import RepoError, build_index, known_error_message, load_indexes, validate_repo
 
 log = logging.getLogger(__name__)
 
@@ -54,14 +53,18 @@ def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="src.cli")
     p.add_argument("--verbose", "-v", action="store_true", help="ayrıntılı (DEBUG) log")
     sub = p.add_subparsers(dest="cmd", required=True)
-    s = sub.add_parser("index"); s.add_argument("--repo", required=True); s.set_defaults(f=cmd_index)
+    s = sub.add_parser("index")
+    s.add_argument("--repo", required=True)
+    s.set_defaults(f=cmd_index)
     for name, f in (("search", cmd_search), ("ask", cmd_ask)):
         s = sub.add_parser(name)
-        s.add_argument("query"); s.add_argument("--repo", required=True)
+        s.add_argument("query")
+        s.add_argument("--repo", required=True)
         s.add_argument("--mode", default="hybrid", choices=MODES)
         s.add_argument("--k", type=int, default=config.TOP_K)
         s.set_defaults(f=f)
-    s = sub.add_parser("eval"); s.add_argument("--set", default="main", choices=["main", "tuning"])
+    s = sub.add_parser("eval")
+    s.add_argument("--set", default="main", choices=["main", "tuning"])
     s.set_defaults(f=cmd_eval)
     a = p.parse_args(argv)
     logging.basicConfig(level=logging.DEBUG if a.verbose else logging.INFO,

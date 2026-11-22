@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "eval"))
 
 from run_eval import REPO_PATHS  # noqa: E402
+
 from src.generator import CITATION  # noqa: E402
 
 REFUSAL = "Bu bilgi repoda yok."

@@ -2,7 +2,7 @@ import pickle
 
 import numpy as np
 
-from src import bm25_index, config, vector_index
+from src import config, vector_index
 from src.bm25_index import BM25Index
 from src.chunk import CodeChunk
 from src.vector_index import NumpyIndex
@@ -124,7 +124,7 @@ def test_prune_indexes(tmp_path, monkeypatch):
     r = tmp_path / "r"
     r.mkdir()
     rh = vector_index.repo_hash(r)
-    for i, kind in enumerate(("numpy", "bm25")):
+    for _i, kind in enumerate(("numpy", "bm25")):
         for j in range(3):
             d = config.INDEX_DIR / kind / f"m_{rh}_c{j}"
             d.mkdir(parents=True)

@@ -1,5 +1,5 @@
-from src.chunk_md import chunk_md
 from src.chunk import chunk_file, make_embed_text
+from src.chunk_md import chunk_md
 
 MD = """intro line
 

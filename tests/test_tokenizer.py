@@ -1,6 +1,6 @@
+from src import config
 from src.bm25_index import BM25Index, tokenize_code
 from src.chunk import CodeChunk
-from src import config
 
 
 def test_camel_case():

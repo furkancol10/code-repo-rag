@@ -76,7 +76,8 @@ def _valid(path, start, end, hits) -> bool:
 
 
 def fix_citations(answer: str, hits) -> str:
-    """Geçersiz atıfları onarır: `[n:a-b]` -> n. bloğun yolu; yanlış ön ekli yol -> doğru yol; olmazsa kaldırır.
+    """Geçersiz atıfları onarır: `[n:a-b]` -> n. bloğun yolu; yanlış ön ekli yol -> doğru yol;
+    olmazsa kaldırır.
     Kod (satır içi / çitli) içine dokunmaz; kaldırılan atıfın önündeki boşluğu da yutar."""
     def span(m, path):
         return f"{m.group(1)}[{path}:{m.group(3)}" + (f"-{m.group(4)}" if m.group(4) else "") + "]"

@@ -44,7 +44,8 @@ def test_dedupe_and_rank():
 
 def test_class_chunk_contains_method():
     cls = C(path="a.py", symbol="NumpyIndex", kind="class",
-            text="class NumpyIndex:\n    def add(self):\n        pass\n    async def search(self, q):\n        pass\n")
+            text=("class NumpyIndex:\n    def add(self):\n        pass\n"
+                  "    async def search(self, q):\n        pass\n"))
     exp = [{"path": "a.py", "symbol": "NumpyIndex.search"}]
     assert is_match(cls, exp)
     assert not is_match(cls, [{"path": "a.py", "symbol": "NumpyIndex.delete"}])

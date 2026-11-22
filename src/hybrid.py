@@ -15,7 +15,7 @@ def rrf(rankings: list[list[str]], k: int = config.RRF_K,
     if len(weights) != len(rankings):
         raise ValueError("weights ile rankings uzunluğu farklı")
     scores: dict[str, float] = {}
-    for ranking, w in zip(rankings, weights):
+    for ranking, w in zip(rankings, weights, strict=True):
         seen = set()
         for rank, cid in enumerate(ranking, start=1):
             if cid in seen:

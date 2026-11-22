@@ -37,7 +37,7 @@ class _Cached:
 
 def distance(p, default):
     """Varsayılana yakınlık (eşitlik bozucu): değişen parametre sayısı, sonra ağırlık farkı."""
-    return (sum(a != b for a, b in zip(p, default)), abs(p[0] - default[0]))
+    return (sum(a != b for a, b in zip(p, default, strict=True)), abs(p[0] - default[0]))
 
 
 def main():
@@ -76,7 +76,7 @@ def main():
     gain = rows[best][1] - rows[default][1]
     chosen = best if gain > MARGIN else default
 
-    lines = ["# Ağırlıklı RRF tuning (eval/tuning.json, %d soru)" % len(questions), "",
+    lines = [f"# Ağırlıklı RRF tuning (eval/tuning.json, {len(questions)} soru)", "",
              "Skor = (name MRR@10 + conceptual MRR@10) / 2. w_vec = 1. "
              "Ana set (questions.json) bu taramada kullanılmadı.", "",
              "| w_bm25 | k | candidates | name hit@5 | name MRR | conc. hit@5 | conc. MRR | skor |",

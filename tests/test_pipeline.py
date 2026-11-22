@@ -10,8 +10,14 @@ import src.hybrid
 import src.pipeline
 from src import config
 from src.hybrid import hybrid_search
-from src.pipeline import (RepoError, build_index, indexes_exist, known_error_message,
-                          load_indexes, validate_repo)
+from src.pipeline import (
+    RepoError,
+    build_index,
+    indexes_exist,
+    known_error_message,
+    load_indexes,
+    validate_repo,
+)
 
 DIM = 64
 

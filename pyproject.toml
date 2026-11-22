@@ -34,3 +34,7 @@ line-length = 110
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# pytest fixture'ları (fakes, repo) başka modülden import edilip parametre olarak yeniden adlandırılır: F811 yanlış pozitif.
+"tests/test_cli.py" = ["F811"]

@@ -1,8 +1,6 @@
 """CLI: index/search/ask alt komutları ve hata yolları (sahte embedder, GPU/Ollama yok)."""
 import logging
 
-import pytest
-
 import src.generator
 from src import cli
 from tests.test_pipeline import fakes, repo  # noqa: F401  (fixture'lar)

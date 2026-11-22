@@ -46,6 +46,7 @@ def release_gpu() -> None:
         del _models[key]
     try:
         import gc
+
         import torch
         gc.collect()
         if torch.cuda.is_available():
