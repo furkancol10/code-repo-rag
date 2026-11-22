@@ -1,0 +1,64 @@
+<svg viewBox="0 0 720 568" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Yol haritası" font-family="DejaVu Sans, sans-serif" style="max-width:100%;height:auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs><rect x="120" y="8" width="188" height="24" rx="4" fill="#1f3a68"/>
+<text x="214.0" y="24" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">Şimdi</text>
+<rect x="316" y="8" width="188" height="24" rx="4" fill="#4a6fa5"/>
+<text x="410.0" y="24" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">Sonra</text>
+<rect x="512" y="8" width="188" height="24" rx="4" fill="#7f8c9b"/>
+<text x="606.0" y="24" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">Belki</text>
+<rect x="4" y="40" width="712" height="114" rx="4" fill="#f4f6fa" stroke="#d4d9e0"/>
+<text x="10" y="60" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Test ve ölçüm</text>
+<rect x="120" y="46" width="188" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="64" font-size="12" text-anchor="middle" fill="#1a1a1a">#1 Playwright dalını birleştir</text>
+<text x="214.0" y="79" font-size="12" text-anchor="middle" fill="#1a1a1a">(S)</text>
+<rect x="120" y="94" width="188" height="27" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="112" font-size="12" text-anchor="middle" fill="#1a1a1a">#2 Atıf eval betiği kalıcı (M)</text>
+<rect x="120" y="127" width="188" height="27" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="145" font-size="12" text-anchor="middle" fill="#1a1a1a">#3 Entegrasyon testleri (M)</text>
+<rect x="316" y="46" width="188" height="42" rx="5" fill="#fff" stroke="#4a6fa5" stroke-width="1.2"/>
+<text x="410.0" y="64" font-size="12" text-anchor="middle" fill="#1a1a1a">#8 Hibrit-vektör, yeni soru</text>
+<text x="410.0" y="79" font-size="12" text-anchor="middle" fill="#1a1a1a">seti (M)</text>
+<rect x="4" y="158" width="712" height="98" rx="4" fill="#fff" stroke="#d4d9e0"/>
+<text x="10" y="178" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Güvenlik</text>
+<rect x="120" y="164" width="188" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="182" font-size="12" text-anchor="middle" fill="#1a1a1a">#4 pickle yerine JSON/npz</text>
+<text x="214.0" y="197" font-size="12" text-anchor="middle" fill="#1a1a1a">(S)</text>
+<rect x="120" y="212" width="188" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="230" font-size="12" text-anchor="middle" fill="#1a1a1a">#5 symlink atla, fsmonitor</text>
+<text x="214.0" y="245" font-size="12" text-anchor="middle" fill="#1a1a1a">kapat (S)</text>
+<rect x="316" y="164" width="188" height="42" rx="5" fill="#fff" stroke="#4a6fa5" stroke-width="1.2"/>
+<text x="410.0" y="182" font-size="12" text-anchor="middle" fill="#1a1a1a">#13 İndeks adı + atomik</text>
+<text x="410.0" y="197" font-size="12" text-anchor="middle" fill="#1a1a1a">yazım (M)</text>
+<rect x="4" y="260" width="712" height="52" rx="4" fill="#f4f6fa" stroke="#d4d9e0"/>
+<text x="10" y="280" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Doğruluk</text>
+<text x="10" y="295" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">(parçalama,</text>
+<text x="10" y="310" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">atıf)</text>
+<rect x="120" y="266" width="188" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="284" font-size="12" text-anchor="middle" fill="#1a1a1a">#6 splitlines ve md çit</text>
+<text x="214.0" y="299" font-size="12" text-anchor="middle" fill="#1a1a1a">düzeltmesi (S)</text>
+<rect x="4" y="316" width="712" height="52" rx="4" fill="#fff" stroke="#d4d9e0"/>
+<text x="10" y="336" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Performans</text>
+<rect x="316" y="322" width="188" height="42" rx="5" fill="#fff" stroke="#4a6fa5" stroke-width="1.2"/>
+<text x="410.0" y="340" font-size="12" text-anchor="middle" fill="#1a1a1a">#9-10 Önbellek + embed</text>
+<text x="410.0" y="355" font-size="12" text-anchor="middle" fill="#1a1a1a">hızı (S/M)</text>
+<rect x="512" y="322" width="188" height="42" rx="5" fill="#fff" stroke="#7f8c9b" stroke-width="1.2"/>
+<text x="606.0" y="340" font-size="12" text-anchor="middle" fill="#1a1a1a">#16 Incremental indexing</text>
+<text x="606.0" y="355" font-size="12" text-anchor="middle" fill="#1a1a1a">(M)</text>
+<rect x="4" y="372" width="712" height="52" rx="4" fill="#f4f6fa" stroke="#d4d9e0"/>
+<text x="10" y="392" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Bakım ve</text>
+<text x="10" y="407" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">belge</text>
+<rect x="120" y="378" width="188" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="214.0" y="396" font-size="12" text-anchor="middle" fill="#1a1a1a">#7 baslat/durdur eşleşmesi</text>
+<text x="214.0" y="411" font-size="12" text-anchor="middle" fill="#1a1a1a">(S)</text>
+<rect x="316" y="378" width="188" height="42" rx="5" fill="#fff" stroke="#4a6fa5" stroke-width="1.2"/>
+<text x="410.0" y="396" font-size="12" text-anchor="middle" fill="#1a1a1a">#11, 12, 14 embed_fn, hata</text>
+<text x="410.0" y="411" font-size="12" text-anchor="middle" fill="#1a1a1a">yönetimi, ruff/mypy (S/M)</text>
+<rect x="4" y="428" width="712" height="114" rx="4" fill="#fff" stroke="#d4d9e0"/>
+<text x="10" y="448" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Erişim ve</text>
+<text x="10" y="463" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">kapsam (v2)</text>
+<rect x="512" y="434" width="188" height="42" rx="5" fill="#fff" stroke="#7f8c9b" stroke-width="1.2"/>
+<text x="606.0" y="452" font-size="12" text-anchor="middle" fill="#1a1a1a">#15 Cross-encoder rerank</text>
+<text x="606.0" y="467" font-size="12" text-anchor="middle" fill="#1a1a1a">(L)</text>
+<rect x="512" y="482" width="188" height="27" rx="5" fill="#fff" stroke="#7f8c9b" stroke-width="1.2"/>
+<text x="606.0" y="500" font-size="12" text-anchor="middle" fill="#1a1a1a">#17 tree-sitter JS/C# (L)</text>
+<rect x="512" y="515" width="188" height="27" rx="5" fill="#fff" stroke="#7f8c9b" stroke-width="1.2"/>
+<text x="606.0" y="533" font-size="12" text-anchor="middle" fill="#1a1a1a">#18 Çağrı grafiği (L)</text>
+<text x="8" y="560" font-size="12" text-anchor="start" fill="#555">Etiket: #n yol haritası madde numarası; (S/M/L) efor. Madde 1-7 Şimdi, 8-14 Sonra, 15-18 Belki.</text></svg>

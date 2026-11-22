@@ -1,0 +1,67 @@
+<svg viewBox="0 0 720 424" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kod Repo Asistanı veri akışı" font-family="DejaVu Sans, sans-serif" style="max-width:100%;height:auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs><rect x="4" y="26" width="126" height="372" rx="8" fill="#eef2f8" stroke="#9aa7bd" stroke-width="1"/>
+<text x="12" y="44" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Giriş</text>
+<rect x="140" y="26" width="286" height="372" rx="8" fill="#eef6ee" stroke="#9aa7bd" stroke-width="1"/>
+<text x="148" y="44" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">İndeksleme (src/pipeline.py)</text>
+<rect x="438" y="26" width="122" height="372" rx="8" fill="#fbf3e6" stroke="#9aa7bd" stroke-width="1"/>
+<text x="446" y="44" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Arama</text>
+<rect x="572" y="26" width="144" height="372" rx="8" fill="#f6eef6" stroke="#9aa7bd" stroke-width="1"/>
+<text x="580" y="44" font-size="12" text-anchor="start" fill="#1f3a68" font-weight="bold">Üretim</text>
+<rect x="10" y="56" width="114" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="67.0" y="74" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">Yerel repo</text>
+<text x="67.0" y="89" font-size="12" text-anchor="middle" fill="#1a1a1a">(.py, .md)</text>
+<rect x="10" y="160" width="114" height="57" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="67.0" y="178" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">src/cli.py</text>
+<text x="67.0" y="193" font-size="12" text-anchor="middle" fill="#1a1a1a">index, search,</text>
+<text x="67.0" y="208" font-size="12" text-anchor="middle" fill="#1a1a1a">ask, eval</text>
+<rect x="10" y="264" width="114" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="67.0" y="282" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">app.py</text>
+<text x="67.0" y="297" font-size="12" text-anchor="middle" fill="#1a1a1a">(Streamlit)</text>
+<rect x="148" y="62" width="270" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="283.0" y="80" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">scanner.py</text>
+<text x="283.0" y="95" font-size="12" text-anchor="middle" fill="#1a1a1a">dosya listesi</text>
+<rect x="148" y="140" width="270" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="283.0" y="158" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">chunk.py, chunk_py.py,</text>
+<text x="283.0" y="173" font-size="12" text-anchor="middle" fill="#1a1a1a">chunk_md.py: CodeChunk</text>
+<rect x="148" y="228" width="130" height="57" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="213.0" y="246" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">embedder.py</text>
+<text x="213.0" y="261" font-size="12" text-anchor="middle" fill="#1a1a1a">bge-m3</text>
+<text x="213.0" y="276" font-size="12" text-anchor="middle" fill="#1a1a1a">vektörleri</text>
+<rect x="288" y="228" width="130" height="58" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="353.0" y="246" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">bm25_index.py</text>
+<text x="353.0" y="261" font-size="12" text-anchor="middle" fill="#1a1a1a">bm25.pkl</text>
+<rect x="148" y="326" width="130" height="57" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="213.0" y="344" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">vector_index.py</text>
+<text x="213.0" y="359" font-size="12" text-anchor="middle" fill="#1a1a1a">vecs.npy +</text>
+<text x="213.0" y="374" font-size="12" text-anchor="middle" fill="#1a1a1a">chunks.json</text>
+<rect x="444" y="205" width="110" height="72" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="499.0" y="223" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">hybrid.py</text>
+<text x="499.0" y="238" font-size="12" text-anchor="middle" fill="#1a1a1a">ağırlıklı RRF</text>
+<text x="499.0" y="253" font-size="12" text-anchor="middle" fill="#1a1a1a">20+20 aday</text>
+<text x="499.0" y="268" font-size="12" text-anchor="middle" fill="#1a1a1a">çıktı: ilk 5</text>
+<rect x="578" y="212" width="132" height="57" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="644.0" y="230" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">generator.py</text>
+<text x="644.0" y="245" font-size="12" text-anchor="middle" fill="#1a1a1a">bağlam kurma,</text>
+<text x="644.0" y="260" font-size="12" text-anchor="middle" fill="#1a1a1a">atıf düzeltme</text>
+<rect x="578" y="336" width="132" height="42" rx="5" fill="#fff" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="644.0" y="354" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">Ollama</text>
+<text x="644.0" y="369" font-size="12" text-anchor="middle" fill="#1a1a1a">qwen3.5:4b</text>
+<path d="M124,86 L148,86" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M283,110 L283,140" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="290" y="129" font-size="12" text-anchor="start" fill="#1a1a1a">yollar</text>
+<path d="M213,190 L213,228" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="220" y="214" font-size="12" text-anchor="start" fill="#1a1a1a">parça metni</text>
+<path d="M353,190 L353,228" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="360" y="214" font-size="12" text-anchor="start" fill="#1a1a1a">token'lar</text>
+<path d="M213,286 L213,326" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="220" y="311" font-size="12" text-anchor="start" fill="#1a1a1a">vektörler</text>
+<path d="M418,257 L444,257" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M278,355 L500,355 L500,281" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M124,191 L134,191 L134,412 L534,412 L534,281" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M124,287 L134,287" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="150" y="407" font-size="12" text-anchor="start" fill="#1a1a1a">sorgu, mod (cli ve app)</text>
+<text x="290" y="349" font-size="12" text-anchor="start" fill="#1a1a1a">20 aday</text>
+<path d="M554,243 L578,243" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<path d="M612,274 L612,336" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="618" y="300" font-size="12" text-anchor="start" fill="#1a1a1a">prompt</text>
+<path d="M676,336 L676,274" fill="none" stroke="#555" stroke-width="1.4" marker-end="url(#ah)"/>
+<text x="670" y="322" font-size="12" text-anchor="end" fill="#1a1a1a">cevap</text></svg>
