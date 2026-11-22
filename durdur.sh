@@ -6,7 +6,8 @@ PIDFILE="$ROOT/data/streamlit.pid"
 msg="Kod Repo Asistanı zaten kapalı."
 if [ -f "$PIDFILE" ]; then
   read -r PID _ <"$PIDFILE"
-  if [ -n "$PID" ] && [ -d "/proc/$PID" ] && [ "$(readlink -f "/proc/$PID/cwd" 2>/dev/null)" = "$ROOT" ]; then
+  if [ -n "$PID" ] && [ -d "/proc/$PID" ] && [ "$(readlink -f "/proc/$PID/cwd" 2>/dev/null)" = "$ROOT" ] \
+     && c="$(tr '\0' ' ' <"/proc/$PID/cmdline" 2>/dev/null)" && [[ "$c" == *streamlit* && "$c" == *app.py* ]]; then
     # çocukları (varsa) ve kendisini kapat
     kill $(pgrep -P "$PID") "$PID" 2>/dev/null
     msg="Kod Repo Asistanı kapatıldı."
