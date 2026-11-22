@@ -7,3 +7,6 @@ __pycache__/
 .claude/
 rapor/parts/
 rapor/build/out/
+node_modules/
+test-results/
+playwright-report/
