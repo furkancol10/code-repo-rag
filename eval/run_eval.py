@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 MODES = ("bm25", "vector", "hybrid")
-REPO_PATHS = {"kisiselnotarama": ROOT.parent / "KisiselNotArama",
+REPO_PATHS = {"kisiselnotarama": ROOT / "data" / "repos" / "kisiselnotarama",
               "httpx": ROOT / "data" / "repos" / "httpx"}
 SUFFIX = re.compile(r"[#~]\d+$")
 
