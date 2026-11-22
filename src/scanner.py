@@ -48,10 +48,16 @@ def _is_text(p: Path) -> bool:
         return False
 
 
-def _inside_root(root_real: Path, p: Path) -> bool:
-    """Symlink değil ve çözümlenmiş yol repo kökü içinde (dizin symlink'i kaçışı dahil)."""
+def _inside_root(root_real: Path, p: Path, root: Path | None = None) -> bool:
+    """Yolun hiçbir bileşeni (kökten sonra) symlink değil ve çözümlenmiş yol kök içinde."""
     try:
-        if p.is_symlink():
+        if root is not None:
+            cur = root
+            for part in p.relative_to(root).parts:
+                cur = cur / part
+                if cur.is_symlink():
+                    return False
+        elif p.is_symlink():
             return False
         p.resolve().relative_to(root_real)
         return True
@@ -67,5 +73,5 @@ def scan_repo(root) -> list[str]:
         files = _walk_files(root)
     root_real = root.resolve()
     return sorted(rel for rel in files
-                  if not _excluded(rel) and _inside_root(root_real, root / rel)
+                  if not _excluded(rel) and _inside_root(root_real, root / rel, root)
                   and (root / rel).is_file() and _is_text(root / rel))

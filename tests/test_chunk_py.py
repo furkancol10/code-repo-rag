@@ -149,3 +149,7 @@ def test_form_feed_and_unicode_separators_keep_line_numbers():
         fn = [c for c in chunk_python("m.py", text) if c.symbol == "a"]
         assert len(fn) == 1, repr(sep)
         assert (fn[0].start_line, fn[0].end_line) == (3, 4), repr(sep)
+        assert fn[0].text == "def a():\n    return 1", repr(sep)
+        mod = [c for c in chunk_python("m.py", text) if c.symbol != "a"]
+        if sep != "\x0c":  # form feed tek başına boşluk satırı, parçada korunmaz
+            assert any(line2 in c.text for c in mod), repr(sep)

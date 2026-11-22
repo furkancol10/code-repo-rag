@@ -38,6 +38,14 @@ class NumpyIndex:
         self.dir = config.INDEX_DIR / "numpy" / name
         self._vecs: np.ndarray | None = None
         self._chunks: list[CodeChunk] | None = None
+        self._stamp: tuple | None = None
+
+    def _disk_stamp(self) -> tuple | None:
+        try:
+            return tuple((st.st_mtime_ns, st.st_ino, st.st_size) for st in
+                         (( self.dir / f).stat() for f in ("vecs.npy", "chunks.json")))
+        except OSError:
+            return None
 
     def exists(self) -> bool:
         return (self.dir / "vecs.npy").exists() and (self.dir / "chunks.json").exists()
@@ -63,13 +71,16 @@ class NumpyIndex:
             raise
         shutil.rmtree(old, ignore_errors=True)
         self._vecs, self._chunks = vecs, list(chunks)  # önbelleği yenile
+        self._stamp = self._disk_stamp()
 
     def _load(self) -> None:
-        if self._vecs is None or self._chunks is None:
+        stamp = self._disk_stamp()
+        if self._vecs is None or self._chunks is None or stamp != self._stamp:
             vecs = np.load(self.dir / "vecs.npy")
             chunks = [CodeChunk(**c) for c in
                       json.loads((self.dir / "chunks.json").read_text("utf-8"))]
             self._vecs, self._chunks = vecs, chunks
+            self._stamp = stamp
 
     def chunks(self) -> list[CodeChunk]:
         self._load()

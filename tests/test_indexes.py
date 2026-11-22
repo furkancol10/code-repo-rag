@@ -66,3 +66,15 @@ def test_vector_search_cached_and_refreshed(tmp_path, monkeypatch):
     r3 = idx.search(q, 5)
     assert [c for c, _ in r3] == [CH[1], CH[0]]
     assert len(calls) == 1
+
+
+def test_numpy_cache_sees_rebuild_by_other_instance(tmp_path, monkeypatch):
+    monkeypatch.setattr(config, "INDEX_DIR", tmp_path)
+    a = NumpyIndex("stale")
+    a.build(CH, _vecs([[1, 0], [0, 1], [1, 1]]))
+    q = np.array([1.0, 0.0], dtype=np.float32)
+    first = a.search(q, 1)[0][0].id
+    b = NumpyIndex("stale")
+    b.build(CH, _vecs([[0, 1], [1, 0], [0, 1]]))  # farklı veri
+    assert a.search(q, 1)[0][0].id != first
+    assert a.search(q, 1)[0][0].id == CH[1].id
