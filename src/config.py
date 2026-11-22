@@ -1,10 +1,12 @@
 """Ayarlar: yollar, modeller, arama parametreleri, dışlama kalıpları."""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT / "data"
 INDEX_DIR = DATA_DIR / "indexes"
 REPOS_DIR = DATA_DIR / "repos"
+DEFAULT_REPO = Path(os.environ.get("KRA_DEFAULT_REPO") or ROOT.parent / "KisiselNotArama")
 
 EMBED_MODEL = "BAAI/bge-m3"
 EMBED_DEVICE_INDEX = "auto"
@@ -25,6 +27,7 @@ MAX_CHUNK_LINES = 80
 
 EXTENSIONS = (".py", ".md")
 MAX_FILE_BYTES = 300_000
+MAX_TOTAL_BYTES = 50_000_000  # indekslenecek dosyaların toplam sınırı
 EXCLUDE_DIRS = {"tests", "test", "build", "dist", ".venv", "venv", "__pycache__",
                 "node_modules", ".git", ".tox", ".mypy_cache", ".pytest_cache"}
 EXCLUDE_FILE_PATTERNS = ("test_*.py", "*_test.py", "*.lock", "conftest.py")
