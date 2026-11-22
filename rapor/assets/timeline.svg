@@ -1,52 +1,69 @@
-<svg viewBox="0 0 720 244" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Geliştirme zaman çizelgesi" font-family="DejaVu Sans, sans-serif" style="max-width:100%;height:auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs><rect x="4" y="20" width="526" height="26" rx="5" fill="#e6ebf3" stroke="#9aa7bd"/>
-<text x="267.0" y="38" font-size="12" text-anchor="middle" fill="#1f3a68" font-weight="bold">20 Kasım 2026 (10 commit)</text>
-<rect x="564" y="20" width="124" height="26" rx="5" fill="#e6ebf3" stroke="#9aa7bd"/>
-<text x="626.0" y="38" font-size="12" text-anchor="middle" fill="#1f3a68" font-weight="bold">21 Kasım 2026</text>
-<line x1="66.0" y1="82" x2="468.0" y2="82" stroke="#1f3a68" stroke-width="2.5"/>
-<line x1="626.0" y1="82" x2="626.0" y2="82" stroke="#1f3a68" stroke-width="2.5"/>
-<line x1="468.0" y1="82" x2="539.0" y2="82" stroke="#1f3a68" stroke-width="2.5"/>
-<line x1="555.0" y1="82" x2="626.0" y2="82" stroke="#1f3a68" stroke-width="2.5"/>
-<path d="M539.0,90 L545.0,74 M549.0,90 L555.0,74" stroke="#c0392b" stroke-width="2" fill="none"/>
-<text x="547.0" y="108" font-size="12" text-anchor="middle" fill="#c0392b" font-weight="bold">~20 sa</text>
-<text x="547.0" y="123" font-size="12" text-anchor="middle" fill="#c0392b">boşluk</text>
-<circle cx="66.0" cy="82" r="14" fill="#1f3a68"/>
-<text x="66.0" y="86" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
-<line x1="66.0" y1="96" x2="66.0" y2="124" stroke="#9aa7bd"/>
-<rect x="6" y="124" width="120" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
-<text x="66.0" y="142" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">0. Plan</text>
-<text x="66.0" y="157" font-size="12" text-anchor="middle" fill="#1a1a1a">15:33</text>
-<text x="66.0" y="172" font-size="12" text-anchor="middle" fill="#1a1a1a">2500377</text>
-<text x="66.0" y="187" font-size="12" text-anchor="middle" fill="#1a1a1a">"plan"</text>
-<circle cx="200.0" cy="82" r="14" fill="#1f3a68"/>
-<text x="200.0" y="86" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
-<line x1="200.0" y1="96" x2="200.0" y2="124" stroke="#9aa7bd"/>
-<rect x="140" y="124" width="120" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
-<text x="200.0" y="142" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">1. İskelet</text>
-<text x="200.0" y="157" font-size="12" text-anchor="middle" fill="#1a1a1a">15:34-15:35</text>
-<text x="200.0" y="172" font-size="12" text-anchor="middle" fill="#1a1a1a">b980049: soru</text>
-<text x="200.0" y="187" font-size="12" text-anchor="middle" fill="#1a1a1a">seti donduruldu</text>
-<circle cx="334.0" cy="82" r="14" fill="#1f3a68"/>
-<text x="334.0" y="86" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
-<line x1="334.0" y1="96" x2="334.0" y2="124" stroke="#9aa7bd"/>
-<rect x="274" y="124" width="120" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
-<text x="334.0" y="142" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">2. Arama</text>
-<text x="334.0" y="157" font-size="12" text-anchor="middle" fill="#1a1a1a">15:38</text>
-<text x="334.0" y="172" font-size="12" text-anchor="middle" fill="#1a1a1a">6dff6cb:</text>
-<text x="334.0" y="187" font-size="12" text-anchor="middle" fill="#1a1a1a">hibrit arama</text>
-<circle cx="468.0" cy="82" r="14" fill="#1f3a68"/>
-<text x="468.0" y="86" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">6</text>
-<line x1="468.0" y1="96" x2="468.0" y2="124" stroke="#9aa7bd"/>
-<rect x="408" y="124" width="120" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
-<text x="468.0" y="142" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">3. Faz 3 + ayar</text>
-<text x="468.0" y="157" font-size="12" text-anchor="middle" fill="#1a1a1a">15:41-16:41</text>
-<text x="468.0" y="172" font-size="12" text-anchor="middle" fill="#1a1a1a">dccbc70:</text>
-<text x="468.0" y="187" font-size="12" text-anchor="middle" fill="#1a1a1a">ağırlıklı RRF</text>
-<circle cx="626.0" cy="82" r="14" fill="#1f3a68"/>
-<text x="626.0" y="86" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">4</text>
-<line x1="626.0" y1="96" x2="626.0" y2="124" stroke="#9aa7bd"/>
-<rect x="566" y="124" width="120" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
-<text x="626.0" y="142" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">4. Denetim</text>
-<text x="626.0" y="157" font-size="12" text-anchor="middle" fill="#1a1a1a">12:52-13:01</text>
-<text x="626.0" y="172" font-size="12" text-anchor="middle" fill="#1a1a1a">1f2b19a: Neon</text>
-<text x="626.0" y="187" font-size="12" text-anchor="middle" fill="#1a1a1a">düzeltmeleri</text>
-<text x="6" y="232" font-size="12" text-anchor="start" fill="#555">Dairedeki sayı faz başına commit sayısıdır (toplam 14). Eksen ölçekli değildir; saatler commit zamanıdır.</text></svg>
+<svg viewBox="0 0 720 434" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Geliştirme zaman çizelgesi" font-family="DejaVu Sans, sans-serif" style="max-width:100%;height:auto"><defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs><rect x="4" y="6" width="714" height="26" rx="5" fill="#e6ebf3" stroke="#9aa7bd"/>
+<text x="361.0" y="24" font-size="12" text-anchor="middle" fill="#1f3a68" font-weight="bold">20 Kasım 2026 (10 commit)</text>
+<line x1="91.0" y1="74" x2="631.0" y2="74" stroke="#1f3a68" stroke-width="2.5"/>
+<circle cx="91.0" cy="74" r="14" fill="#1f3a68"/>
+<text x="91.0" y="78" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
+<line x1="91.0" y1="88" x2="91.0" y2="100" stroke="#9aa7bd"/>
+<rect x="6" y="100" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="91.0" y="118" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">0. Plan</text>
+<text x="91.0" y="133" font-size="12" text-anchor="middle" fill="#1a1a1a">20 Kas 15:33</text>
+<text x="91.0" y="148" font-size="12" text-anchor="middle" fill="#1a1a1a">2500377</text>
+<text x="91.0" y="163" font-size="12" text-anchor="middle" fill="#1a1a1a">"plan"</text>
+<circle cx="271.0" cy="74" r="14" fill="#1f3a68"/>
+<text x="271.0" y="78" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
+<line x1="271.0" y1="88" x2="271.0" y2="100" stroke="#9aa7bd"/>
+<rect x="186" y="100" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="271.0" y="118" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">1. İskelet</text>
+<text x="271.0" y="133" font-size="12" text-anchor="middle" fill="#1a1a1a">15:34-15:35</text>
+<text x="271.0" y="148" font-size="12" text-anchor="middle" fill="#1a1a1a">b980049: soru</text>
+<text x="271.0" y="163" font-size="12" text-anchor="middle" fill="#1a1a1a">seti donduruldu</text>
+<circle cx="451.0" cy="74" r="14" fill="#1f3a68"/>
+<text x="451.0" y="78" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">1</text>
+<line x1="451.0" y1="88" x2="451.0" y2="100" stroke="#9aa7bd"/>
+<rect x="366" y="100" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="451.0" y="118" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">2. Arama</text>
+<text x="451.0" y="133" font-size="12" text-anchor="middle" fill="#1a1a1a">15:38</text>
+<text x="451.0" y="148" font-size="12" text-anchor="middle" fill="#1a1a1a">6dff6cb:</text>
+<text x="451.0" y="163" font-size="12" text-anchor="middle" fill="#1a1a1a">hibrit arama</text>
+<circle cx="631.0" cy="74" r="14" fill="#1f3a68"/>
+<text x="631.0" y="78" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">6</text>
+<line x1="631.0" y1="88" x2="631.0" y2="100" stroke="#9aa7bd"/>
+<rect x="546" y="100" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="631.0" y="118" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">3. Faz 3 ve ayar</text>
+<text x="631.0" y="133" font-size="12" text-anchor="middle" fill="#1a1a1a">15:41-16:41</text>
+<text x="631.0" y="148" font-size="12" text-anchor="middle" fill="#1a1a1a">dccbc70:</text>
+<text x="631.0" y="163" font-size="12" text-anchor="middle" fill="#1a1a1a">ağırlıklı RRF</text>
+<rect x="4" y="209" width="354" height="26" rx="5" fill="#e6ebf3" stroke="#9aa7bd"/>
+<text x="181.0" y="227" font-size="12" text-anchor="middle" fill="#1f3a68" font-weight="bold">21 Kasım 2026 (6 commit)</text>
+<rect x="364" y="209" width="174" height="26" rx="5" fill="#e6ebf3" stroke="#9aa7bd"/>
+<text x="451.0" y="227" font-size="12" text-anchor="middle" fill="#1f3a68" font-weight="bold">22 Kasım (9 commit)</text>
+<line x1="91.0" y1="277" x2="451.0" y2="277" stroke="#1f3a68" stroke-width="2.5"/>
+<circle cx="91.0" cy="277" r="14" fill="#1f3a68"/>
+<text x="91.0" y="281" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">4</text>
+<line x1="91.0" y1="291" x2="91.0" y2="303" stroke="#9aa7bd"/>
+<rect x="6" y="303" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="91.0" y="321" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">4. Denetim, 1. tur</text>
+<text x="91.0" y="336" font-size="12" text-anchor="middle" fill="#1a1a1a">21 Kas 12:52-13:01</text>
+<text x="91.0" y="351" font-size="12" text-anchor="middle" fill="#1a1a1a">1f2b19a: Neon</text>
+<text x="91.0" y="366" font-size="12" text-anchor="middle" fill="#1a1a1a">düzeltmeleri</text>
+<circle cx="271.0" cy="277" r="14" fill="#1f3a68"/>
+<text x="271.0" y="281" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">2</text>
+<line x1="271.0" y1="291" x2="271.0" y2="303" stroke="#9aa7bd"/>
+<rect x="186" y="303" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="271.0" y="321" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">5. E2E ve belge</text>
+<text x="271.0" y="336" font-size="12" text-anchor="middle" fill="#1a1a1a">21 Kas 12:35 ve 13:10</text>
+<text x="271.0" y="351" font-size="12" text-anchor="middle" fill="#1a1a1a">9b57b5d: Playwright</text>
+<text x="271.0" y="366" font-size="12" text-anchor="middle" fill="#1a1a1a">testleri</text>
+<circle cx="451.0" cy="277" r="14" fill="#1f3a68"/>
+<text x="451.0" y="281" font-size="12" text-anchor="middle" fill="#fff" font-weight="bold">9</text>
+<line x1="451.0" y1="291" x2="451.0" y2="303" stroke="#9aa7bd"/>
+<rect x="366" y="303" width="170" height="72" rx="5" fill="#f4f6fa" stroke="#1f3a68" stroke-width="1.2"/>
+<text x="451.0" y="321" font-size="12" text-anchor="middle" fill="#1a1a1a" font-weight="bold">6. 2. tur düzeltme</text>
+<text x="451.0" y="336" font-size="12" text-anchor="middle" fill="#1a1a1a">22 Kas 12:39-12:47</text>
+<text x="451.0" y="351" font-size="12" text-anchor="middle" fill="#1a1a1a">77b5f78: master'a;</text>
+<text x="451.0" y="366" font-size="12" text-anchor="middle" fill="#1a1a1a">8fb632d son commit</text>
+<rect x="335.0" y="268" width="52" height="18" fill="#fff"/>
+<path d="M353.0,286 L359.0,268 M363.0,286 L369.0,268" stroke="#c0392b" stroke-width="2" fill="none"/>
+<text x="361.0" y="263" font-size="12" text-anchor="middle" fill="#c0392b" font-weight="bold">~23 sa boşluk</text>
+<text x="6" y="408" font-size="12" text-anchor="start" fill="#555">Dairedeki sayı faz başına commit sayısıdır (toplam 25). Eksen ölçekli değildir; saatler commit zamanıdır.</text>
+<text x="6" y="423" font-size="12" text-anchor="start" fill="#555">2. satır 1. satırın devamıdır (aralarında ~20 sa gece boşluğu).</text></svg>
