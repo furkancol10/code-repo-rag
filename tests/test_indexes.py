@@ -78,3 +78,89 @@ def test_numpy_cache_sees_rebuild_by_other_instance(tmp_path, monkeypatch):
     b.build(CH, _vecs([[0, 1], [1, 0], [0, 1]]))  # farklı veri
     assert a.search(q, 1)[0][0].id != first
     assert a.search(q, 1)[0][0].id == CH[1].id
+
+
+def _git_repo(tmp_path):
+    import subprocess
+    r = tmp_path / "repo"
+    r.mkdir()
+    (r / "a.py").write_text("def a():\n    return 1\n")
+    env = ["git", "-c", "user.email=t@t", "-c", "user.name=t"]
+    subprocess.run(["git", "init", "-q"], cwd=r, check=True)
+    subprocess.run(["git", "add", "."], cwd=r, check=True)
+    subprocess.run([*env, "commit", "-qm", "x"], cwd=r, check=True)
+    return r
+
+
+def test_index_name_clean_git_has_no_content_hash(tmp_path):
+    r = _git_repo(tmp_path)
+    n = vector_index.index_name("m", r)
+    assert n == f"m_{vector_index.repo_hash(r)}_{vector_index.commit_short(r)}"
+
+
+def test_index_name_changes_when_dirty(tmp_path):
+    r = _git_repo(tmp_path)
+    clean = vector_index.index_name("m", r)
+    (r / "a.py").write_text("def a():\n    return 2222\n")
+    d1 = vector_index.index_name("m", r)
+    assert d1 != clean and d1.startswith(clean)
+    (r / "a.py").write_text("def a():\n    return 3\n")
+    assert vector_index.index_name("m", r) != d1
+
+
+def test_index_name_nogit_tracks_changes(tmp_path):
+    r = tmp_path / "plain"
+    r.mkdir()
+    (r / "a.py").write_text("x = 1\n")
+    n1 = vector_index.index_name("m", r)
+    assert "_nogit_" in n1
+    (r / "a.py").write_text("x = 22\n")
+    assert vector_index.index_name("m", r) != n1
+
+
+def test_prune_indexes(tmp_path, monkeypatch):
+    import os
+    monkeypatch.setattr(config, "INDEX_DIR", tmp_path / "idx")
+    r = tmp_path / "r"
+    r.mkdir()
+    rh = vector_index.repo_hash(r)
+    for i, kind in enumerate(("numpy", "bm25")):
+        for j in range(3):
+            d = config.INDEX_DIR / kind / f"m_{rh}_c{j}"
+            d.mkdir(parents=True)
+            os.utime(d, ns=(10**9 * (j + 1),) * 2)
+    other = config.INDEX_DIR / "numpy" / "m_deadbeef_c0"
+    other.mkdir()
+    vector_index.prune_indexes(r, keep=1)
+    for kind in ("numpy", "bm25"):
+        left = sorted(p.name for p in (config.INDEX_DIR / kind).iterdir())
+        assert [n for n in left if rh in n] == [f"m_{rh}_c2"]
+    assert other.exists()
+
+
+def test_concurrent_build_same_name(tmp_path, monkeypatch):
+    import threading
+    monkeypatch.setattr(config, "INDEX_DIR", tmp_path)
+    errs = []
+
+    def work(k):
+        try:
+            for _ in range(5):
+                v = np.full((3, 2), k, dtype=np.float32)
+                NumpyIndex("c").build(CH, v)
+                BM25Index("c").build(CH)
+                NumpyIndex("c").search(np.ones(2, dtype=np.float32), 2)
+                BM25Index("c").search("note", 2)
+        except BaseException as e:  # noqa
+            errs.append(e)
+
+    ts = [threading.Thread(target=work, args=(k,)) for k in range(4)]
+    [t.start() for t in ts]
+    [t.join() for t in ts]
+    assert not errs
+    idx = NumpyIndex("c")
+    assert len(idx.chunks()) == 3 and len(set(idx._vecs.ravel().tolist())) == 1
+    assert BM25Index("c").search("save note", 1)[0][0] == CH[0]
+    left = [p.name for k in ("numpy", "bm25") for p in (tmp_path / k).iterdir()]
+    assert sorted(n for n in left if not n.startswith(".")) == ["c", "c"]
+    assert not [n for n in left if ".tmp" in n or ".old" in n]

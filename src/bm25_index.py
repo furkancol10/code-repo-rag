@@ -1,7 +1,6 @@
 """BM25 indeksi: kod tokenizer'ı (camelCase/snake_case/dotted) + rank-bm25 BM25Okapi."""
 import json
 import re
-import shutil
 from dataclasses import asdict
 
 import numpy as np
@@ -9,6 +8,7 @@ from rank_bm25 import BM25Okapi
 
 from . import config
 from .chunk import CodeChunk
+from .vector_index import atomic_write_dir, read_retry
 
 _NAME = re.compile(r"[^\W\d]\w*(?:\.[^\W\d]\w*)*")  # rakamla başlamayan adlar
 # Python anahtar kelimeleri + sık geçen anlamsız kelimeler (EN/TR)
@@ -96,28 +96,14 @@ class BM25Index:
         self._set(list(chunks), corpus)
         if self.dir is None:
             return
-        # Geçici dizine yaz, başarılıysa değiştir (vector_index ile aynı mantık)
-        tmp = self.dir.with_name(self.dir.name + ".tmp")
-        old = self.dir.with_name(self.dir.name + ".old")
-        for d in (tmp, old):
-            shutil.rmtree(d, ignore_errors=True)
-        tmp.mkdir(parents=True)
-        try:
+        def write(tmp):
             (tmp / "bm25.json").write_text(
                 json.dumps({"version": 2, "chunks": [asdict(c) for c in chunks],
                             "corpus": corpus}, ensure_ascii=False), encoding="utf-8")
-            if self.dir.exists():
-                self.dir.rename(old)
-            tmp.rename(self.dir)
-        except BaseException:
-            if old.exists() and not self.dir.exists():
-                old.rename(self.dir)
-            shutil.rmtree(tmp, ignore_errors=True)
-            raise
-        shutil.rmtree(old, ignore_errors=True)
+        atomic_write_dir(self.dir, write)
 
     def load(self) -> None:
-        data = json.loads(self.path.read_text("utf-8"))
+        data = json.loads(read_retry(lambda: self.path.read_text("utf-8")))
         self._set([CodeChunk(**c) for c in data["chunks"]], data["corpus"])
 
     def chunks(self) -> list[CodeChunk]:
